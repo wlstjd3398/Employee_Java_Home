@@ -9,6 +9,8 @@ public class Sol18 {
 		// 다른 몇가지 예시를 보여주세요
 		String number = "1\t2\t3";
 		System.out.println(number);
+		
+		
 	}
 
 }
