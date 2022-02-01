@@ -10,7 +10,7 @@ public class Sol9 {
 		Random random = new Random();
 		
 		int value = random.nextInt() / 3;
-		int tri = value ? true : false;
+		int tri = (value==0) ? true : false;
 		
 		System.out.println(tri);
 		
