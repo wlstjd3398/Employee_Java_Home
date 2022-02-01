@@ -1,19 +1,20 @@
 package chapter03;
 
-import java.util.Scanner;
+import java.util.Random;
 
 public class Sol9 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		Scanner scanf = new Scanner(System.in);
+		Random random = new Random();
 		
-		int value = scanf.nextInt();
+		int value = random.nextInt() / 3;
+		int tri = value ? true : false;
 		
-		if ((value % 2 = 0) || (value % 3 = 0)) {
-			true
-		}
+		System.out.println(tri);
+		
+		
 		
 	}
 
