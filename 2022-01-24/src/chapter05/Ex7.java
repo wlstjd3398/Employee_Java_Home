@@ -12,6 +12,15 @@ public class Ex7 {
 		int money = 30000;
 		if(hour >= 8 && money >= 30000)
 			System.out.println("택시를 타고 학교간다");
+		
+		// if 안의 if로 만들어서 사용가능(중첩if문)
+//		if(hour >= 8) {
+//			if(money >= 30000) {
+//				System.out.println("택시를 타고 학교간다");
+//			}
+//		}
+		
+		
 	}
 
 }

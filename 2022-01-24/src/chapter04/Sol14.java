@@ -16,11 +16,11 @@ public class Sol14 {
 		char[] alphabet1 = {'a', 'b', 'c', 'd', 'e'};
 		char[] alphabet2 = new char[alphabet1.length];
 		
-		alphabet2[0] = alphabet1[0] - 32;
-		alphabet2[1] = alphabet1[1];
-		alphabet2[2] = alphabet1[2];
-		alphabet2[3] = alphabet1[3];
-		alphabet2[4] = alphabet1[4];
+		alphabet2[0] = 'A';
+		alphabet2[1] = 'B';
+		alphabet2[2] = 'C';
+		alphabet2[3] = 'D';
+		alphabet2[4] = 'E';
 		
 		System.out.println("alphabet1 => " + Arrays.toString(alphabet1));
 		System.out.println("alphabet2 => " + Arrays.toString(alphabet2));
