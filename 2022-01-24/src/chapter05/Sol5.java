@@ -15,14 +15,24 @@ public class Sol5 {
 		System.out.println("10명의 중간고사 점수 총합 = " + sum);
 		System.out.println("10명의 중간고사 점수 평균 = "  + avg);
 		
-		if (test[n] >= avg) {
-			 
-			if(test[n])
+		int n = 0;
+		int pass = 0;
+
+		while(test[n] >= 0) {
+			
+			if(test[n]  avg) {
+				n++;
+			}else {
+				pass++;
+				n++;
+				
+			}	
 		}
 		
 		
+
 		
-		System.out.println("중간고사 평균점수 이상의 학생 수는 " +  + "명입니다.");
+		System.out.println("중간고사 평균점수 이상의 학생 수는 " + pass + "명입니다.");
 		
 	}
 

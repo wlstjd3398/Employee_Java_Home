@@ -6,7 +6,7 @@ public class Sol6 {
 		// TODO Auto-generated method stub
 
 		int point = 65;
-		point = ;
+		point = point / 10;
 		
 		switch(point) {
 			case 10:
@@ -23,6 +23,8 @@ public class Sol6 {
 				System.out.println("¿œπ›");
 		}
 
+		
+		
 	}
 
 }
