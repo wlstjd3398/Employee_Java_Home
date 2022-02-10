@@ -20,13 +20,14 @@ public class Sol10 {
 				String correctAnswer = "백조";
 				
 				// 사용자가 입력한 정답과 퀴즈의 정답이 일치하다면 정답입니다. 출력
-				if(correctAnswer == userAnswer) {
+				if(correctAnswer.equals(userAnswer)) {
 					System.out.println("정답입니다.");
 				} else {
 					System.out.println("틀렸습니다");
 				}
 
-		??왜 틀린거지
+//		왜 틀린거지?? -> if(correctAnswer.equals(userAndwer)) 이 부분에 correctAnswer = userAnswer이
+//				각각의 메모리주소가 저장되어있기때문에 문자열의 값은 equal라는 메서드를 사용해서 treu or false를 출력시킴
 	}
 
 }
