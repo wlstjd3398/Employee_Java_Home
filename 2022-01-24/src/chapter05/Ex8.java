@@ -25,8 +25,7 @@ public class Ex8 {
 			// (num 변수에 들어있는 값이 음수 또는 양수라면)
 			// () 위와 같이 조건을 붙여서 else를 생각하면 안됨!
 			// 그렇지 않다면 이라고 생각 해야함
-			System.out.println("num 변수에 들어있는 값이 0이 아닙니다.");
-			
+			System.out.println("num 변수에 들어있는 값이 0이 아닙니다.");	
 		}
 		
 	}
