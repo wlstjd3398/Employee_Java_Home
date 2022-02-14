@@ -10,7 +10,7 @@ public class Sol7 {
 		// 배열 합계
 		double sum = arr[0];
 		for(int n=1; n<arr.length; n++) {
-			sum=sum+arr[n];
+			sum = sum + arr[n];
 		}
 		System.out.println(sum);
 		
@@ -21,8 +21,8 @@ public class Sol7 {
 		// 배열 최대값 0-1 0-2 0-3 0-4 0-5
 		int max = arr[0];
 		for(int m=1; m<arr.length; m++) {
-			if(arr[m]>=max) {
-				max=arr[m];
+			if(arr[m] >= max) {
+				max = arr[m];
 			}
 		}
 		System.out.println("최대값 = " + max);
@@ -30,8 +30,8 @@ public class Sol7 {
 		// 배열 최소값
 		int min = arr[0];
 		for(int m=1; m<arr.length; m++) {
-			if(arr[m]<=min) {
-				min=arr[m];
+			if(arr[m] <= min) {
+				min = arr[m];
 			}
 		}
 		System.out.println("최소값 = " + min);
