@@ -1,13 +1,16 @@
 package chapter07;
 
-public class Sol1 {
+public class Sol5 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		SutdaCard sdc = new SutdaCard();
+		Rectangle r1 = new Rectangle();
+		r1.lux = 1;
+		r1.luy = 2;
 		
-		System.out.println(sdc);
+		r1.rlx = 3;
+		r1.rly = 4;
 		
 		
 	}
