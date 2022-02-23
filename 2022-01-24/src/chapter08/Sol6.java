@@ -1,12 +1,12 @@
 package chapter08;
 
-public class Sol2 {
+public class Sol6 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		Pencil p1 = new Pencil();
-		p1.division(534, 30);
+		Round r1 = new Round();
+		r1
 		
 	}
 
