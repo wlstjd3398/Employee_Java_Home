@@ -18,50 +18,6 @@ public class Game {
 		this.w = w;
 	}
 
-	
-
-
-
-	public void setH(Helmet h) {
-		this.h = h;
-	}
-
-
-
-
-
-	public void setU(Upper u) {
-		this.u = u;
-	}
-
-
-
-
-
-	public void setL(Lower l) {
-		this.l = l;
-	}
-
-
-
-
-
-	public void setS(Shoes s) {
-		this.s = s;
-	}
-
-
-
-
-
-	public void setW(Weapon w) {
-		this.w = w;
-	}
-
-
-
-
-
 	public void gameInfo() {
 		System.out.println("<< Helmet >>");
 		System.out.println("defense = " + h.defense);
