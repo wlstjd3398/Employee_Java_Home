@@ -28,7 +28,7 @@ public class Ex2 {
 			System.out.println(number);
 		}
 		// -> 문제가 있음 i<=10; 이 아니라 종료식이 더 많으면 그뒤의 수는 잘림
-//		int size = intList.size(); // 요소의 수를 알려준다
+//		int size = intList.size(); // size() : 요소의 수를 알려준다
 //		for(int i=0; i<size; i++) {
 //			Integer number = intList.get(i);
 //			System.out.println(number);
