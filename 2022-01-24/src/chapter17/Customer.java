@@ -16,12 +16,24 @@ public class Customer {
 	
 	
 	// 오버라이딩의 조건 : ?? = 상속? 조건을 만족해야한다 
-	// 메서드 용도 : 이 객체와 매개변수로 전달받은 객체가 같은지 다른지 알려줌
+	// 메서드 용도 : 이 객체와 매개변수로 전달받은 객체가(두 객체) 같은지 다른지 알려줌
 	// 어떤 코드를 써야될지 채워보자
+	
+	// 비교대상을 가지고와서 매개변수로, 두객체 비교해서, 비교한 결과를 저장, true or false를 리턴
 	@Override
 	public boolean equals(Object obj) {
-		// TODO Auto-generated method stub
-		return super.equals(obj);
+		Customer other = (Customer) obj; // Customer 형태를가져옴
+		String otherName = other.getName();
+		String otherTel = other.getTel();
+		int otherSeat = other.getSeat();
+		
+		boolean nameSame = name.equals(otherName);
+		boolean telSame = tel.equals(otherTel);
+		boolean seatSame = seat == (otherSeat);
+		
+		
+//		return super.equals(obj);
+		return nameSame && telSame && seatSame;
 	}
 
 
