@@ -37,7 +37,7 @@ public class Ex10 {
 		// index번호가 없어서 get을 할수없음
 //		set.get
 		// 접근방법1
-		for(Integer number : set) {
+		for(Integer number : set) {// set에서 차례대로 꺼낼 객체가 없을때까지 number에 넣겠다
 			System.out.println(number);
 		}
 		
@@ -61,6 +61,7 @@ public class Ex10 {
 //		nthInteger = iterator.next();
 //		System.out.println(nthInteger);
 		// 더이상 next가 없어서 못함
+		
 		
 		// while 반복문으로 바꾸세요
 		// 꼭 순서대로 할 필요없음, 반복되는것부터 먼저 해도됨

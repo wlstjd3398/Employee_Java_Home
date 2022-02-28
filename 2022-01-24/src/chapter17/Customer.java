@@ -38,7 +38,7 @@ public class Customer {
 
 
 
-	// 메서드 용도 : 오버라이딩을 하려면 상속을 만족해야한다(자식클래스가 부모를 선택할수있게해야함)
+	// 메서드 용도 : 
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub

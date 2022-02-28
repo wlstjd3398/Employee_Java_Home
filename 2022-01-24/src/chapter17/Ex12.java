@@ -1,6 +1,7 @@
 package chapter17;
 
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 
 public class Ex12 {
@@ -39,7 +40,20 @@ public class Ex12 {
 		
 		
 		// iterator도 해보기
+		Iterator<Book> iterator = bookList.iterator();
+		Book nthBook;
 		
+		while(iterator.hasNext()) {
+			nthBook = iterator.next();
+			System.out.println(nthBook);
+			
+		for() {
+			
+			
+		}
+			
+		
+		}
 		
 	}
 
