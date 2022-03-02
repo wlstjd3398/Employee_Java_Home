@@ -5,12 +5,21 @@ public class Customer {
 	private String name;
 	private String tel;
 	private int seat;
+	// 결제방법 매개변수 추가
+	private String paymentMethod;
 	
 	// 메서드 용도 : 매개변수의 형태로 인스턴스를 호출하기위해
 	public Customer(String name, String tel, int seat) {
 		this.name = name;
 		this.tel = tel;
 		this.seat = seat;
+	}
+	
+	
+	// 연락처, 결제 방법을 저장하는 생성자
+	public Customer(String tel, String paymentMethod) {
+		this.tel = tel;
+		this.paymentMethod = paymentMethod;
 	}
 	
 	
@@ -57,7 +66,11 @@ public class Customer {
 		return seat;
 	}
 	
+	public String getPaymentMethod() {
+		return paymentMethod;
+	}
 	
+
 	// 메서드 용도 : 멤버변수 private 되어있어서 set으로 외부에서 저장
 	public void setName(String name) {
 		this.name = name;
@@ -68,7 +81,9 @@ public class Customer {
 	public void setSeat(int seat) {
 		this.seat = seat;
 	}
-	
+	public void setPaymentMethod(String paymentMethod) {
+		this.paymentMethod = paymentMethod;
+	}
 	
 	
 }

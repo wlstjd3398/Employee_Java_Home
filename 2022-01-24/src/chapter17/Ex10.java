@@ -9,6 +9,7 @@ public class Ex10 {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
+		// set은 equals와 hashcode를 오버라이딩해야한다
 		Set<Integer> set = new HashSet<>();
 		
 		set.add(1);
