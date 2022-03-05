@@ -16,7 +16,7 @@ public class Ex1 {
 		
 		// 클래스를 ctrl 누른채로 클릭하면 그 클래스로 이동함
 		
-		// 데이터타입 Car인 myCar를 생성(데이터들일 저장된 객체)
+		// 데이터타입 Car인 myCar를 생성(데이터들이 저장된 객체)
 		Car myCar;
 		myCar = new Car();
 		
