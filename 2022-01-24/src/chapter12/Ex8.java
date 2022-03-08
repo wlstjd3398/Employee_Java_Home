@@ -32,11 +32,11 @@ public class Ex8 {
 		Fruit[] fruitShelf = new Fruit[3];
 		fruitShelf[0] = new Apple();
 		fruitShelf[1] = new Banana();
-		fruitShelf[2] = new Onion(); // 다형성에 의해 틀린 코드가 맞는것
+		//fruitShelf[2] = new Onion(); // 다형성에 의해 틀린 코드가 맞는것
 		
 		Vegetable[] VegetableShelf = new Vegetable[3];
 		VegetableShelf[0] = new Onion();
-		VegetableShelf[1] = new banana(); // 다형성에 의해 틀린 코드가 맞는 것
+		//VegetableShelf[1] = new Banana(); // 다형성에 의해 틀린 코드가 맞는 것
 		
 	
 	}
