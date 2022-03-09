@@ -6,6 +6,7 @@ public interface Calculatorable {
 //	어디서든접근가능한 클래스멤버변수 상수화된 데이터타입 변수이름;
 //	접근제어자 데이터타입 변수이름;
 	
+	// 인터페이스에는 상수화된 멤버변수(public static final ~)와 추상메서드(abstract가 있으면 소스코드 없음)가 필수
 	public static final int value = 10;
 	
 	
