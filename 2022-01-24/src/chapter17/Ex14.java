@@ -34,8 +34,6 @@ public class Ex14 {
 		
 		// iterator
 		
-		
-		
 //		System.out.println("첫 번째 고객의 이름 : 홍길동");
 //		System.out.println("첫 번째 고객의 연락처 : " + c1.getTel());
 //		System.out.println("첫 번째 고객의 결제방법 : " + c1.getPaymentMethod());

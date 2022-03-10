@@ -20,7 +20,7 @@ public class Ex13 {
 		
 		System.out.println(classOneKor);
 		
-		// 각 데이터대신 키가 있기에 get 사용시 키를 사용해서 불러옴
+		// 각 데이터대신 키가 있기에 get 사용시 키를 사용해서 값 불러옴
 		int student1Kor = classOneKor.get("홍길동");
 		System.out.println("홍길동의 국어점수 : " + student1Kor);
 		
