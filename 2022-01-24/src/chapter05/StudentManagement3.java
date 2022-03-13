@@ -1,8 +1,8 @@
 package chapter05;
 
-import java.util.Scanner;
+import java.util.Random;
 
-public class StudentManagement1 {
+public class StudentManagement3 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -14,24 +14,23 @@ public class StudentManagement1 {
 		double[] avgs = new double[2];
 		int[] ranks = new int[2];
 		
-		Scanner scan = new Scanner(System.in);
-		
+		Random random = new Random();
 		
 		System.out.println("1 번째 학생의 성적을 입력하세요");
 		System.out.println("국어 => ");
-		kor[0] = scan.nextInt();
+		kor[0] = random.nextInt(101);
 		System.out.println("영어 => ");
-		eng[0] = scan.nextInt();
+		eng[0] = random.nextInt(101);
 		System.out.println("수학 => ");
-		mat[0] = scan.nextInt();
+		mat[0] = random.nextInt(101);
 		
 		System.out.println("2 번째 학생의 성적을 입력하세요");
 		System.out.println("국어 => ");
-		kor[1] = scan.nextInt();
+		kor[1] = random.nextInt(101);
 		System.out.println("영어 => ");
-		eng[1] = scan.nextInt();
+		eng[1] = random.nextInt(101);
 		System.out.println("수학 => ");
-		mat[1] = scan.nextInt();
+		mat[1] = random.nextInt(101);
 		
 		sums[0] = kor[0]+eng[0]+mat[0];
 		avgs[0] = (double) sums[0] / 3;
@@ -39,10 +38,27 @@ public class StudentManagement1 {
 		sums[1] = kor[1]+eng[1]+mat[1];
 		avgs[1] = (double) sums[1] / 3;
 		
-		ranks[0] = avgs[0] > avgs[1] ? 1 : 2; 
-		ranks[1] = avgs[0] < avgs[1] ? 1 : 2; 
-		ranks[0] = avgs[0] == avgs[1] ? 1 : ranks[0]; 
-		ranks[1] = avgs[0] == avgs[1] ? 1 : ranks[1]; 
+//		ranks[0] = avgs[0] > avgs[1] ? 1 : 2; 
+//		ranks[1] = avgs[0] < avgs[1] ? 1 : 2; 
+//		ranks[0] = avgs[0] == avgs[1] ? 1 : ranks[0]; 
+//		ranks[1] = avgs[0] == avgs[1] ? 1 : ranks[1]; 
+		
+		if(avgs[0] > avgs[1]) {
+			ranks[0]=1;
+		}else if(avgs[0] < avgs[1]){
+			ranks[0]=2;
+		}else {
+			ranks[0]=1;
+		}
+		
+		if(avgs[0] < avgs[1]) {
+			ranks[1]=1;
+		}else if(avgs[0] > avgs[1]){
+			ranks[1]=2;
+		}else {
+			ranks[1]=1;
+		}
+		
 		
 		System.out.println("<< 1 번째 학생의 성적 >>");
 		System.out.println("국어 = " + kor[0]);

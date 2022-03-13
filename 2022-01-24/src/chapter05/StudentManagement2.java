@@ -1,8 +1,8 @@
 package chapter05;
 
-import java.util.Scanner;
+import java.util.Random;
 
-public class StudentManagement1 {
+public class StudentManagement2 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -14,24 +14,23 @@ public class StudentManagement1 {
 		double[] avgs = new double[2];
 		int[] ranks = new int[2];
 		
-		Scanner scan = new Scanner(System.in);
-		
+		Random random = new Random();
 		
 		System.out.println("1 번째 학생의 성적을 입력하세요");
 		System.out.println("국어 => ");
-		kor[0] = scan.nextInt();
+		kor[0] = random.nextInt(101);
 		System.out.println("영어 => ");
-		eng[0] = scan.nextInt();
+		eng[0] = random.nextInt(101);
 		System.out.println("수학 => ");
-		mat[0] = scan.nextInt();
+		mat[0] = random.nextInt(101);
 		
 		System.out.println("2 번째 학생의 성적을 입력하세요");
 		System.out.println("국어 => ");
-		kor[1] = scan.nextInt();
+		kor[1] = random.nextInt(101);
 		System.out.println("영어 => ");
-		eng[1] = scan.nextInt();
+		eng[1] = random.nextInt(101);
 		System.out.println("수학 => ");
-		mat[1] = scan.nextInt();
+		mat[1] = random.nextInt(101);
 		
 		sums[0] = kor[0]+eng[0]+mat[0];
 		avgs[0] = (double) sums[0] / 3;
