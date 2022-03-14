@@ -17,21 +17,21 @@ public class Ex2 {
 		ByteArrayInputStream input = new ByteArrayInputStream(inSrc);
 		ByteArrayOutputStream output = new ByteArrayOutputStream();
 		
-		// ¹è¿­·Î °¡Á®¿À´Â¹ı(Ex1 4byteÀÇ 10¹è·Î µ¥ÀÌÅÍ¸¦ ÀĞ¾î¿Ã¼öÀÖÀ½)
-		// ´©°¡ ÁÁ´Ù ³ª»Ú´Ù°¡ ¾Æ´Ï Àå´ÜÁ¡ÀÌ ÀÖÀ½
+		// ë°°ì—´ë¡œ ê°€ì ¸ì˜¤ëŠ”ë²•(Ex1 4byteì˜ 10ë°°ë¡œ ë°ì´í„°ë¥¼ ì½ì–´ì˜¬ìˆ˜ìˆìŒ)
+		// ëˆ„ê°€ ì¢‹ë‹¤ ë‚˜ì˜ë‹¤ê°€ ì•„ë‹ˆ ì¥ë‹¨ì ì´ ìˆìŒ
 		
-		// ¹è¿­À» ÀÎÀÚ·Î ÇØ¼­ ´ã¾Æ¼­ read, writeÇÏ¸é 
+		// ë°°ì—´ì„ ì¸ìë¡œ í•´ì„œ ë‹´ì•„ì„œ read, writeí•˜ë©´ 
 		try {
 			input.read(basket);	
 			output.write(basket);
 			
-			// output°ú ¿¬°áµÈ °ø°£À» byteArrayÈ­½ÃÅ´
+			// outputê³¼ ì—°ê²°ëœ ê³µê°„ì„ byteArrayí™”ì‹œí‚´
 			outSrc = output.toByteArray();
 			
 			System.out.println("Input Source : " + Arrays.toString(inSrc));
 			System.out.println("Output Source : " + Arrays.toString(outSrc));
 		}catch(IOException e) {
-			System.out.println("read µµÁß ¿¹¿Ü°¡ ¹ß»ıÇß½À´Ï´Ù.");
+			System.out.println("read ë„ì¤‘ ì˜ˆì™¸ê°€ ë°œìƒí–ˆìŠµë‹ˆë‹¤.");
 		}
 		
 		
