@@ -22,32 +22,37 @@ public class pokemon1 {
 		System.out.println("포켓몬빵 로고 표시합니다.");
 		
 		
-		while(true) {
+		String[] arr1 = new String[2];
+		int arr1Size = arr1.length;
 		
-			System.out.println("빵의 스티커 뒷면의 추첨번호를 입력해주세요");
-			
-			Scanner rightScan = new Scanner(System.in);
-			String drawScan = rightScan.next();
-			int limit = drawScan.length();
-			
-			System.out.println("추첨번호를 확인하겠습니다.");
-			
-			// 추첨번호를 목록에 차례대로 저장시켜서 노출시켜야함
-			
-			if(limit<=10 && limit>=8) {
-				System.out.println("올바른 추첨번호입니다. 다음 추첨번호를 입력해주세요");
-					String[] arr1 = new String[2];			
-					for(int i=0; i<arr1.length; i++) {
-						arr1[i] = drawScan;
-						System.out.println("저장된 추첨목록의 추첨번호 = " + arr1[i]);
-					}
-				break;
-			}else {
-				System.out.println("해당 추첨번호가 일치하지 않습니다. 다시 입력해주세요.");
+
+		System.out.println("빵의 스티커 뒷면의 추첨번호를 입력해주세요");
+		
+		Scanner drawScan = new Scanner(System.in);
+		
+			for(int i=0; i<arr1Size; i++) {
+				
+				
+				arr1[i] = drawScan.next();
+				
+				int limit = arr1[i].length();
+				
+				System.out.println("추첨번호를 확인하겠습니다.");
+				
+				if(limit<=10 && limit>=8) {
+					System.out.println("확인된 추첨목록의 추첨번호 = " + arr1[i]);
+					
+				}else {
+					System.out.println("추첨번호를 다시 입력해주세요");
+					i--;
+				}
+				
 			}
-		}
+
 		
-		// 완성하고나면 핸드폰번호도 해당 추첨번호 배열에 넣기
+		for(int i=0; i<arr1Size; i++) {
+			System.out.println("추첨목록에 저장된 추첨번호 = " + arr1[i]);
+		}
 		
 		
 		System.out.println("= = = = = 응모를 시작합니다. = = = = =");
