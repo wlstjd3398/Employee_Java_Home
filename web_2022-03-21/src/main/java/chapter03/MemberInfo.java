@@ -25,6 +25,21 @@ public class MemberInfo {
 	public void setPw(String pw) {
 		this.pw = pw;
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		MemberInfo otherMemberInfo = (MemberInfo) obj;
+		
+		String otherMemberId = otherMemberInfo.getId();
+		String otherMemberPw = otherMemberInfo.getPw();
+		
+		boolean sameId = otherMemberId.equals(id);
+      	boolean samePw = otherMemberPw.equals(pw);
+
+				
+		
+      	return sameId && samePw;
+	}
 	
 	
 	

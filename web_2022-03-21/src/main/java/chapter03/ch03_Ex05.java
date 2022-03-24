@@ -20,8 +20,34 @@ public class ch03_Ex05 extends HttpServlet {
 		String pw = request.getParameter("pw");
 		//문자열로 꺼내줌
 		
-		System.out.println("클라이언트가 전달한 id값 = " + id);
-		System.out.println("클라이언트가 전달한 pw값 = " + pw);
+		MemberInfo memberInfo = new MemberInfo(id, pw);
+		
+		//로그인 : 회원 정보 중 사용자가 입력한 아이디와 비밀번호가 일치하는 회원 정보를 select (찾다)
+		// 회원정보 DB의 처음부터 끝까지 접근해서
+		// n번째 회원의 아이디와 비밀번호가 사용자가 입력한 아이디, 비밀번호와 일치한다면
+		// 	로그인 성공
+		// 일치하지 않는다면
+		// 	로그인 실패
+		
+		boolean success = false; // 로그인이 실패했다고 가정하고 시작
+		for(MemberInfo nthMemberInfo : join.memberInfoList) {
+			if(memberInfo.equals(nthMemberInfo)) {		
+				// 로그인 성공
+				success = true;
+				break;
+			}
+		}
+			
+		if(success) {
+			response.sendRedirect("loginSuccess.html");
+		}else {
+			response.sendRedirect("loginFail.html");
+		}
+		
+		
+		
+//		System.out.println("클라이언트가 전달한 id값 = " + id);
+//		System.out.println("클라이언트가 전달한 pw값 = " + pw);
 		
 	}
 
