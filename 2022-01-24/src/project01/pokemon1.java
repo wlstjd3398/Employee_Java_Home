@@ -21,7 +21,7 @@ public class pokemon1 {
 		System.out.println("=====추첨번호로 추첨에 응모하는 프로그램을 시작하겠습니다.=====");
 		System.out.println("포켓몬빵 로고 표시합니다.");
 		
-		
+		// Array -> List로 수정해야함
 		String[] arr1 = new String[2];
 		int arr1Size = arr1.length;
 		
