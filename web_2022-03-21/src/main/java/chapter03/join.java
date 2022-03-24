@@ -52,9 +52,9 @@ public class join extends HttpServlet {
 			response.sendRedirect("/joinFail.html");
 			pass = false;
 		}
-//		else if(아이디에 우리가 정하지 않은 특수문자가 들어있을 경우) {
+//		else if(id.indexOf('! @ #')만가능하게  아이디에 우리가 정하지 않은 특수문자가 들어있을 경우) {
 //					
-//		}else if(비밀번호에 우리가 정하지 않은 특수문자가 들어있을 경우) {
+//		}else if(pw.indexOf('~ !')만가능하게  비밀번호에 우리가 정하지 않은 특수문자가 들어있을 경우) {
 //					
 //		}
 
@@ -101,7 +101,6 @@ public class join extends HttpServlet {
 		String pw = request.getParameter("pw");
 		
 		//메서드로 response객체를 checkParameter로 전달
-		
 		//파라미터가 올바른지 여부를 확인(checkParameter) 할때
 		//올바르지 않다면 클라이언트가 리다이렉트 해야할 경로를 지정해줬으므로
 		//올바르지 않을 때는 리다이렉트 해야할 경로로 이동하도록 이 서블릿이 그대로 끝날수 있게  if문을 구성
@@ -109,6 +108,7 @@ public class join extends HttpServlet {
 		if(!pass) {
 			return;
 		}
+		
 		
 		// 회원가입 : 새로운 회원의 정보를 이 사이트의 데이터베이스에 저장하는 것
 		// 아직 db 연결을 안배웠으니 db 역할을 할 list를 사용할 예정
