@@ -22,7 +22,7 @@ public class pokemon2 {
 // 학원에서 수정한것 참고하고 java는 배열은 잘쓰지않고 list 잘씀
 // chapter17_2,3 컬렉션프레임워크list(1),(2)참고
 // list로 해서 다 추첨하고나서 휴대폰번호는 따로 받기
-		List<String> strList = new ArrayList<>();
+		List<String> strList = new ArrayList<>(2);
 		
 		int strListSize = strList.size();
 		
@@ -31,7 +31,7 @@ public class pokemon2 {
 		
 		Scanner drawScan = new Scanner(System.in);
 		
-		
+		//chapter17 -> Ex4, Ex3 참고
 		
 			for(int i=0; i<strListSize; i++) {
 				
