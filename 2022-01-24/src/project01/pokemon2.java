@@ -63,7 +63,7 @@ public class pokemon2 {
 
 		
 		
-		
+		// 배열 -> 리스트
 		System.out.println("추첨인원은 몇명입니까?");
 		
 		Scanner sc = new Scanner(System.in);
@@ -73,29 +73,35 @@ public class pokemon2 {
 		
 		ArrayList<String> strList = new ArrayList<String>();
 		
+		System.out.println("추첨번호를 입력하세요");
 		
 		for(int i=0;i<num;i++) {
 			
-			System.out.println("추첨번호를 입력하세요");
+			String draw = sc.next();
 			
-			int limit = sc.next().length();
+			int limit = draw.length();
+			
+			System.out.println("추첨번호를 확인하겠습니다.");
 			
 			if(limit <= 10 && limit >= 8) {
-				//추첨번호를 바로 위에서 한번, 여기서 한번 또 입력하게함
-				//입력하지 않아도 바로 위에서 입력한 값을 바로 추가할수있게해야함
-				strList.add(sc.next());  
 				
+				strList.add(draw);
+				
+				System.out.println("확인된 추첨목록의 추첨번호 = " + strList);
+				
+				strList.get(i);
+
 			}else {
+				System.out.println("추첨번호를 다시 입력해주세요");
 				i--;
 			}
-			
-			
-			
+
 			
 		}
-		System.out.println(strList);
+		for(int i=0; i<num; i++) {
+			System.out.println("추첨목록에 저장된 추첨번호 = " + strList);
+		}
 		
-		System.out.println("완료");
 	
 		
 		

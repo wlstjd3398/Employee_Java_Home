@@ -21,41 +21,45 @@ public class pokemon1 {
 		System.out.println("=====추첨번호로 추첨에 응모하는 프로그램을 시작하겠습니다.=====");
 		System.out.println("포켓몬빵 로고 표시합니다.");
 		
-		// Array -> List로 수정해야함
-		String[] arr1 = new String[2];
-		int arr1Size = arr1.length;
 		
-
-		System.out.println("빵의 스티커 뒷면의 추첨번호를 입력해주세요");
+		System.out.println("추첨인원은 몇명이죠?");
 		
-		Scanner drawScan = new Scanner(System.in);
+		Scanner sc = new Scanner(System.in);
 		
-			for(int i=0; i<arr1Size; i++) {
+		int num = sc.nextInt();
+		
+		
+		ArrayList<String> strList = new ArrayList<String>();
+		
+		System.out.println("추첨번호를 입력하세요");
+		
+		for(int i=0;i<num;i++) {
+			
+			String draw = sc.next();
+			int limit = draw.length();
+			
+			System.out.println("추첨번호를 확인하겠습니다.");
+			
+			if(limit <= 10 && limit >= 8) {
 				
-				
-				arr1[i] = drawScan.next();
-				
-				int limit = arr1[i].length();
-				
-				System.out.println("추첨번호를 확인하겠습니다.");
-				
-				if(limit<=10 && limit>=8) {
-					System.out.println("확인된 추첨목록의 추첨번호 = " + arr1[i]);
-					
-				}else {
-					System.out.println("추첨번호를 다시 입력해주세요");
-					i--;
-				}
-				
+				strList.add(draw);
+				System.out.println("확인된 추첨목록의 추첨번호 = " + strList);
+				strList.get(i);
+				System.out.println("추첨번호를 인원에 맞게 더 입력해주세요");
+			}else {
+				System.out.println("추첨번호를 다시 입력해주세요");
+				i--;
 			}
 
-		
-		for(int i=0; i<arr1Size; i++) {
-			System.out.println("추첨목록에 저장된 추첨번호 = " + arr1[i]);
 		}
+		for(int i=0; i<num; i++) {
+			System.out.println("추첨목록에 저장된 추첨번호 = " + strList);
+		}
+
 		
 		
 		System.out.println("= = = = = 응모를 시작합니다. = = = = =");
+		
 		
 		
 		while(true) {
@@ -88,14 +92,15 @@ public class pokemon1 {
 		}
 		
 		
+		
 		System.out.println("= = = = = 결과보기 = = = = =");
 		
 		
+		
         if(true) {
-        	System.out.println("과연");
-    		System.out.println("당첨여부는? ");
+        	System.out.println("과연 당첨여부는? ");
     		Random random1 = new Random();
-    		int yn = random1.nextInt(2);
+    		int yn = random1.nextInt(10);
     		 if(yn==1) {
     			 System.out.println("당첨입니다. 해당 휴대폰번호로 안내문자가"
     			 		+ " 오늘 중으로 갈예정입니다. 그러니 휴대폰번호를 입력해주세요.");
@@ -114,7 +119,7 @@ public class pokemon1 {
     					System.out.println("휴대폰번호가 일치하지 않습니다. 다시 입력해주세요.");
     				}
     			}
-    		 }else if(yn==0) {
+    		 }else {
     			 System.out.println("아쉽지만 꽝입니다. 다음 기회에..");
     		 }
         }
