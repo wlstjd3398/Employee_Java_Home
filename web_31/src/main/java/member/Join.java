@@ -40,7 +40,7 @@ public class Join extends HttpServlet {
 		Database.memberInfoTable.add(memberInfo);
 		
 		// 회원가입 성공 페이지로 이동
-		response.sendRedirect("/web_31/member/joinSucces.html");
+		response.sendRedirect("/web_31/member/joinSuccess.html");
 	}
 
 }
