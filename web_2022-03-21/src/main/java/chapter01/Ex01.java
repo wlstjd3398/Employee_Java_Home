@@ -14,12 +14,10 @@ public class Ex01 extends HttpServlet {
 
     public Ex01() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		response.setContentType("text/html;charset=UTF-8");
 		// response라는 객체를 set메서드로 클라이언트한테 전달 UTF-8이라는 것으로 포장했다(문자 인코딩)
 		response.getWriter().append("Ex01 서비스를 이용해주셔서 감사합니다!");
@@ -28,7 +26,6 @@ public class Ex01 extends HttpServlet {
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 
