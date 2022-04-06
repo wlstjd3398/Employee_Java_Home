@@ -4,6 +4,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 
 import vo.MemberInfo;
+import vo.NoticeInfo;
 
 public class StartupProcessor extends HttpServlet{
 	// 클래스를 http서블릿으로
@@ -33,6 +34,15 @@ public class StartupProcessor extends HttpServlet{
 		
 		Database.memberInfoTable.add(memberInfo);
 		Database.memberInfoTable.add(adminInfo);
+		
+		NoticeInfo noticeInfo = new NoticeInfo("제목1", "내용1");
+		Database.noticeInfoTable.add(noticeInfo);
+		noticeInfo = new NoticeInfo("제목2", "내용2");
+		Database.noticeInfoTable.add(noticeInfo);
+		noticeInfo = new NoticeInfo("제목3", "내용3");
+		Database.noticeInfoTable.add(noticeInfo);
+		noticeInfo = new NoticeInfo("제목4", "내용4");
+		Database.noticeInfoTable.add(noticeInfo);
 		
 		
 	}
