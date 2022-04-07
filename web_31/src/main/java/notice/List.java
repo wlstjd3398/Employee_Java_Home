@@ -29,7 +29,7 @@ public class List extends HttpServlet {
 					data = data + "{\"title\":\""+ noticeInfo.getTitle() + "\","
 							+ "\"contents\":\"" + noticeInfo.getContents() +"\"},";
 				}
-					data = data.substring(0, data.length()-2);
+					data = data.substring(0, data.length()-1);
 					// 마지막,를 substring으로 data.length()-2로 잘라줌
 					
 					out.print(data);

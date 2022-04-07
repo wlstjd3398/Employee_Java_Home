@@ -36,7 +36,7 @@ public class Header extends HttpServlet {
 			//ajax를 이용하여 javascript에서 사용할것
 			
 			//앞에 정보들을 json에 담아서 출력해줘야함
-			out.print("{\"isLogin\":true,\"loginUserName\":\"" + loginUserName + ",\"userLevel\":\"" + userLevel + "\"}");
+			out.print("{\"isLogin\":true,\"loginUserName\":\"" + loginUserName + "\",\"userLevel\":\"" + userLevel + "\"}");
 			
 			out.close();
 			
