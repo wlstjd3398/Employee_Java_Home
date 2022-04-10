@@ -39,12 +39,12 @@ public class Ex01 extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		//클라이언트가 보낸것을 서버가 utf-8로 인식
+		// 클라이언트가 보낸것을 서버가 utf-8로 인식
 		
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
 		String name = request.getParameter("name");
-		//hobby는 선택안하거나, 하나 선택하거나, 여러개 선택할수도 있음
+		// hobby는 선택안하거나, 하나 선택하거나, 여러개 선택할수도 있음
 		String[] hobbies = request.getParameterValues("hobby");
 		
 		String gender = request.getParameter("gender");
