@@ -2,7 +2,7 @@ package etc;
 
 public class MenuNumber {
 
-	//나중에 보면 swtich case1이 무언인지 알기 어려움
+	//나중에 보면 switch case1이 무언인지 알기 어려움
 	
 	// 클래스 멤버 변수를 활용해서 1번 메뉴의 이름을 생성
 	public static final int JOIN = 1;
