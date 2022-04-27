@@ -22,7 +22,7 @@ public class MemberController1 extends HttpServlet {
 		HttpSession session = request.getSession();
 		session.removeAttribute("isLogin");
 		session.removeAttribute("loginUserName");
-		session.removeAttribute("loginUserLevel");
+		session.removeAttribute("userLevel");
 		//공지사항관련 세션도 지워봄
 		
 		// 로그인말고 다른 상태정보가 있을 경우에는 invalidate 사용하면 안됨
@@ -113,7 +113,7 @@ public class MemberController1 extends HttpServlet {
 			HttpSession session = request.getSession();
 			
 			session.setAttribute("isLogin", true);
-			session.setAttribute("userLevel", loginUserName);
+			session.setAttribute("userLevel", userLevel);
 			session.setAttribute("loginUserName", loginUserName);
 			
 			response.setContentType("application/json;charset=utf-8");
@@ -122,7 +122,7 @@ public class MemberController1 extends HttpServlet {
 			//json으로 값을 보내주기
 			String result = "{\"loginUserName\": \"" + loginUserName + "\", \"userLevel\": \"" + userLevel + "\"}"; 
 			
-			out.print(loginUserName);
+			out.print(result);
 			
 			out.close();
 		}else {

@@ -16,5 +16,8 @@
 
 <c:set var ="PAGE_MAIN_URL" value="/web_31/main/index.jsp" />
 
-<c:set var ="SERVLET_NOTICE_FORM_URL" value="/web_31/notice/form" />
+<c:set var ="PAGE_NOTICE_FORM_URL" value="/web_31/notice/form.jsp" />
 
+<c:set var="SERVLET_NOTICE_WRITE" value="/web_31/notice/controller" />
+
+<c:set var="SERVLET_NOTICE_LIST" value="${SERVLET_NOTICE_WRITE }"/>
