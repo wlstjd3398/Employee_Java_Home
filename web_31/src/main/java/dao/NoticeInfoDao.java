@@ -40,7 +40,7 @@ public class NoticeInfoDao {
 		}
 	}
 	
-	public List<NoticeInfo> selectNoticeInfo() {
+	public List<NoticeInfo> selectNoticeInfo(int pageNumber) {
 		Database db = new Database();
 		
 		Connection conn = db.getConnection();
@@ -50,9 +50,10 @@ public class NoticeInfoDao {
 		List<NoticeInfo> noticeInfoList = new ArrayList<>();
 		
 		try {
-			String sql = "SELECT * FROM noticeInfo ORDER BY id DESC";
+			String sql = "SELECT * FROM noticeInfo ORDER BY id DESC LIMIT  ?, 5";
 			
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, (pageNumber - 1) * 5);
 			
 			rs = pstmt.executeQuery();
 			
@@ -73,6 +74,39 @@ public class NoticeInfoDao {
 		}
 		
 		return noticeInfoList;
+	}
+	
+	public int getAmountOfNotice() {
+		Database db = new Database();
+		
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		int amount = 0;
+		
+		try {
+			String sql = "SELECT COUNT(*) AS amount FROM noticeInfo";
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			rs.next();
+			
+			amount = rs.getInt("amount"); // 칼럼 이름을 amount으로 사용
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			db.closeResultSet(rs);
+			db.closePstmt(pstmt);
+			db.closeConnection(conn);
+		}
+		
+		return amount;
+		
 	}
 	
 }

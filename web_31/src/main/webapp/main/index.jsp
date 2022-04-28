@@ -24,7 +24,7 @@
 	<main>
 		<div id="notice_title">
 			<h2>공지사항</h2>
-			<a href="/project2/notice/list.html"> [ 더보기 ] </a>
+			<a href="${PAGE_NOTICE_LIST}"> [ 더보기 ] </a>
 		</div>
 		
 		<!-- <div id="notice_list">공지사항이 없습니다.</div>  -->
@@ -38,8 +38,9 @@
 	<script type="text/javascript">
 		// 공지사항 목록을 불러와 보여줄 ajax
 		$.ajax({
-			url: "${GET_NOTICE_LIST_URL}",
+			url: "${SERVLET_NOTICE_LIST}",
 			type: "GET",
+			data: "pageNumber=1",
 			dataType: "json",
 			success: function(result) {
 				// 서버가 전달해준 공지사항 목록의 제목과 내용들을 console.log를 사용해 모두 출력하세요.
