@@ -37,7 +37,7 @@
 							$("#login_area").text(result.loginUserName + "님 환영합니다!");
 							
 							$("#join_area button").text("로그아웃");
-							$("#join_area > button").off("clcik");
+							$("#join_area > button").off("click");
 							$("#join_area > button").on("click", function() {
 								location.href = "${LOGOUT_URL}";
 							});
@@ -79,10 +79,10 @@
 				</script>
 			</c:if>
 		
-			<button type="button">로그아웃</button>
+			<button type="button" id="logout_btn">로그아웃</button>
 			
 			<script>
-				$("#join_area > button").on("click", function() {
+				$("#logout_btn").on("click", function() {
 					location.href = "${LOGOUT_URL}";
 				});
 			</script>

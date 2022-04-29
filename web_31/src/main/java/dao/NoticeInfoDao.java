@@ -58,10 +58,11 @@ public class NoticeInfoDao {
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
+				int id = rs.getInt("id");
 				String title = rs.getString("title");
 				String contents = rs.getString("contents");
 				
-				NoticeInfo nthNoticeInfo = new NoticeInfo(title, contents);
+				NoticeInfo nthNoticeInfo = new NoticeInfo(id, title, contents);
 				
 				noticeInfoList.add(nthNoticeInfo);
 			}
@@ -108,6 +109,72 @@ public class NoticeInfoDao {
 		return amount;
 		
 	}
+	
+	public NoticeInfo selectNoticeInfoById(int id) {
+		Database db = new Database();
+		
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		NoticeInfo noticeInfo = null;
+		
+		try {
+			String sql = "SELECT * FROM noticeInfo WHERE id = ?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, id);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				String title = rs.getString("title");
+				String contents = rs.getString("contents");
+				
+				noticeInfo = new NoticeInfo(id, title, contents);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			db.closeResultSet(rs);
+			db.closePstmt(pstmt);
+			db.closeConnection(conn);
+		}
+		
+		return noticeInfo;
+	}
+	
+	
+	public boolean deleteNoticeInfoById(int id) {
+		Database db = new Database();
+		
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
+		
+		boolean result = false;
+		
+		try {
+			String sql = "DELETE FROM noticeInfo WHERE id = ?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, id);
+			
+			int count = pstmt.executeUpdate();
+			
+			result = count == 1;
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			db.closePstmt(pstmt);
+			db.closeConnection(conn);
+		}
+		return result;
+		
+		
+	}
+	
+	
 	
 }
 
