@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.NoticeInfoDao;
+import service.NoticeService;
+import vo.NoticeInfo;
 
 @WebServlet("/notice/controller2")
 public class NoticeController2 extends HttpServlet {
@@ -27,6 +29,34 @@ public class NoticeController2 extends HttpServlet {
 		out.close();
 		
 	}
+
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		
+		int id = Integer.parseInt(req.getParameter("id"));
+		
+		String title = req.getParameter("title");
+		String contents = req.getParameter("contents");
+		
+		NoticeInfo noticeInfo = new NoticeInfo(id, title, contents);
+		
+		NoticeService service = new NoticeService();
+		
+		boolean result = service.updateNoticeInfo(noticeInfo);
+		
+		if(result) {
+			// 공지사항을 성공적으로 수정했다면
+			// 상태코드 200으로 응답
+
+		}else {
+			// 공지사항을 성공적으로 수정하지 못했다면
+			// 상태코드 400으로 응답
+			resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+		}
+	}
+	
 
 
 }

@@ -65,6 +65,12 @@ public class NoticeService {
 			return data;
 	}
 	
+	
+	public boolean updateNoticeInfo(NoticeInfo newNoticeInfo) {
+		
+		NoticeInfoDao dao = new NoticeInfoDao();
+		return dao.updateNoticeInfo(newNoticeInfo);
+	}
 }
 
 
