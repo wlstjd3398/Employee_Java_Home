@@ -20,11 +20,12 @@ public class NoticeInfoDao {
 		
 		try {
 			// 3. 쿼리 작성
-			String sql = "INSERT INTO noticeInfo(`title`, `contents`) VALUES(?, ?)";
+			String sql = "INSERT INTO noticeInfo(`title`, `contents`, `filePath`) VALUES(?, ?, ?)";
 			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, noticeInfo.getTitle());
 			pstmt.setString(2, noticeInfo.getContents());
+			pstmt.setString(3, noticeInfo.getFilePath());
 			
 			// 4. stmt 를 통해서 쿼리 실행 및 결과 전달
 			int count = pstmt.executeUpdate();
@@ -50,7 +51,7 @@ public class NoticeInfoDao {
 		List<NoticeInfo> noticeInfoList = new ArrayList<>();
 		
 		try {
-			String sql = "SELECT * FROM noticeInfo ORDER BY id DESC LIMIT  ?, 5";
+			String sql = "SELECT * FROM noticeInfo ORDER BY id DESC LIMIT ?, 5";
 			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, (pageNumber - 1) * 5);
@@ -130,8 +131,9 @@ public class NoticeInfoDao {
 			while(rs.next()) {
 				String title = rs.getString("title");
 				String contents = rs.getString("contents");
+				String filePath = rs.getString("filePath");
 				
-				noticeInfo = new NoticeInfo(id, title, contents);
+				noticeInfo = new NoticeInfo(id, title, contents ,filePath);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -182,15 +184,14 @@ public class NoticeInfoDao {
 		
 		boolean result = false;
 		
-		
-		
 		try {
-			String sql = "UPDATE noticeInfo SET title = ?, contents = ? WHERE id = ?";
+			String sql = "UPDATE noticeInfo SET title = ?, contents = ?, filePath = ? WHERE id = ?";
 			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1,  noticeInfo.getTitle());
 			pstmt.setString(2,  noticeInfo.getContents());
-			pstmt.setInt(3, noticeInfo.getId());
+			pstmt.setString(3,  noticeInfo.getFilePath());
+			pstmt.setInt(4, noticeInfo.getId());
 			
 			int count = pstmt.executeUpdate();
 			

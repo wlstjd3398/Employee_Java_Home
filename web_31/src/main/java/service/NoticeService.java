@@ -59,7 +59,7 @@ public class NoticeService {
 		
 		if(noticeInfo != null) {
 			// 공지사항의 상세정보를 확인했다면 
-			data = "{\"id\": " + noticeInfo.getId() + ",\"title\":\"" + noticeInfo.getTitle() + "\",\"contents\":\"" + noticeInfo.getContents() + "\"}";
+			data = "{\"id\": " + noticeInfo.getId() + ",\"title\":\"" + noticeInfo.getTitle() + "\",\"contents\":\"" + noticeInfo.getContents() + "\",\"filePath\":\"" + noticeInfo.getFilePath() + "\"}";
 		}
 		
 			return data;
