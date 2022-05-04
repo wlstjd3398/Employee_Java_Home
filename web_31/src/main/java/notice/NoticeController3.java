@@ -28,7 +28,7 @@ public class NoticeController3 extends HttpServlet {
 		
 		String data = service.loadNoticeInfoToJson(id);
 		
-		response.setContentType("application/json;charset=utf-8");
+		response.setContentType("text/plain;charset=utf-8");
 		
 		PrintWriter out = response.getWriter();
 		

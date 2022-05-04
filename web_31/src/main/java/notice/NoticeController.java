@@ -1,5 +1,6 @@
 package notice;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -43,7 +44,7 @@ public class NoticeController extends HttpServlet {
 		String data = service.loadNoticeInfoListToJson(pageNumber);
 		
 		// JSON을 전달한다.
-		response.setContentType("application/json;charset=UTF-8");
+		response.setContentType("text/plain;charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		
 		out.print(data);
@@ -88,10 +89,10 @@ public class NoticeController extends HttpServlet {
 		// -> MultipartRequest (cos.jar 파일이 필요)
 		// 또는 commons-fileupload (commons-fileupload.jsr, commons-io.jar 파일을 필요)
 		
-		// 첨부파일을 적절한 위치에 저장함
+		// 첨부파일을 적절한 위치에 저장함(서비스가 처리하도록 할 것)
 		
 		
-		
+		// DB에 첨부파일의 위치를 기록함(DAO가 처리하도록 할 것)
 		
 		
 		// 클라이언트가 보낸 파라미터 값 검증
@@ -119,6 +120,15 @@ public class NoticeController extends HttpServlet {
 		// DB에서 해당 id를 가지고 있는 공지사항을 삭제
 			// 서비스가 없어도되는  단순한 것
 		NoticeInfoDao dao = new NoticeInfoDao();
+
+		NoticeInfo noticeInfo = dao.selectNoticeInfoById(id);
+		if(noticeInfo.getFilePath() != null) {
+			String path = req.getRealPath(noticeInfo.getFilePath());
+			
+			File file = new File(path);
+			file.delete();
+		}
+		
 		
 		boolean result = dao.deleteNoticeInfoById(id);
 		
