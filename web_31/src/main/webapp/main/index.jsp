@@ -41,11 +41,16 @@
 			url: "${SERVLET_NOTICE_LIST}",
 			type: "GET",
 			data: "pageNumber=1",
-			dataType: "json",
-			success: function(result) {
+			dataType: "text",
+			success: function(noticeInfo) {
 				// 서버가 전달해준 공지사항 목록의 제목과 내용들을 console.log를 사용해 모두 출력하세요.
 				
-				let noticeList = result.noticeList;
+				noticeInfo = noticeInfo.replace(/\r/g, "\\r");
+				noticeInfo = noticeInfo.replace(/\n/g, "\\n");
+				
+				noticeInfo = JSON.parse(noticeInfo);
+				
+				let noticeList = noticeInfo.noticeList;
 				
 				for(let i=0; i<noticeList.length; i++) {
 					let notice = noticeList[i];
