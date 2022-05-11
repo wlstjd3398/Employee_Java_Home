@@ -30,6 +30,23 @@ public class ProductInfo {
 		this.insertDate = insertDate;
 	}
 	
+	public ProductInfo(int idx, String name, String category, int stock, int price, String img) {
+		this.idx = idx;
+		this.name = name;
+		this.category = category;
+		this.stock = stock;
+		this.price = price;
+		this.img = img;
+	}
+	
+	public int getIdx() {
+		return idx;
+	}
+
+	public void setIdx(int idx) {
+		this.idx = idx;
+	}
+
 	public String getName() {
 		return name;
 	}
@@ -63,10 +80,9 @@ public class ProductInfo {
 	public LocalDateTime getInsertDate() {
 		return insertDate;
 	}
-	public void setInserDate(LocalDateTime insertDate) {
+	public void setInsertDate(LocalDateTime insertDate) {
 		this.insertDate = insertDate;
 	}
-	
 	
 	
 	
