@@ -5,13 +5,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import util.Database;
 import vo.ProductInfo;
 
 public class ProductInfoDao {
 
-	public boolean insertProductInfo(ProductInfo productInfo) {
+public boolean insertProductInfo(ProductInfo productInfo) {
 		
 		Database db = new Database();
 		
@@ -45,6 +47,7 @@ public class ProductInfoDao {
 	}
 	
 	}
+	
 	
 	public void updateProductInfo(ProductInfo productInfo) {
 		Database db = new Database();
@@ -112,6 +115,7 @@ public class ProductInfoDao {
 		
 	}
 	
+	
 	public ProductInfo selectByIdx(int idx) {
 		Database db = new Database();
 		
@@ -165,7 +169,8 @@ public class ProductInfoDao {
 		
 	}
 	
-	public int loadProductList() {
+	
+	public int getCount() {
 		Database db = new Database();
 		
 		Connection conn = db.getConnection();
@@ -174,10 +179,9 @@ public class ProductInfoDao {
 		
 		int amount = 0;
 		
-		
 		try {
 			
-			String sql = "SELECT COUNT(*) amount FROM buy_list LIMIT 10";
+			String sql = "SELECT COUNT(*) AS amount FROM product_info";
 			
 			pstmt = conn.prepareStatement(sql);
 			
@@ -189,6 +193,8 @@ public class ProductInfoDao {
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
+			// 예외 발생할 일이 없어서 생략해도 됨
+			
 		} finally {
 			db.closeResultSet(rs);
 			db.closePstmt(pstmt);
@@ -199,6 +205,81 @@ public class ProductInfoDao {
 		
 	}
 	
+	public List<ProductInfo> selectAll(int pageNumber){
+		Database db = new Database();
+		
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		List<ProductInfo> productInfoList = new ArrayList<>();
+		
+		try {
+			String sql = "SELECT * FROM product_info LIMIT ?, 10";
+			
+			// * 10 에서 10이 의미하는 바는 한 페이지에 보여줘야할 상품의 수
+			int startIndex = (pageNumber - 1) * 10;
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, startIndex);
+			
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				int nthIdx = rs.getInt("idx");
+				String name = rs.getString("name");
+				String category = rs.getString("category");
+				int stock = rs.getInt("stock");
+				int price = rs.getInt("price");
+				String img = rs.getString("img");
+				String t_insertDate = rs.getString("insertDate");
+				
+				t_insertDate = t_insertDate.substring(0, t_insertDate.indexOf('.'));
+				t_insertDate = t_insertDate.replace(' ', 'T');
+				
+				LocalDateTime insertDate = LocalDateTime.parse(t_insertDate);
+				
+				ProductInfo nthProductInfo = new ProductInfo(nthIdx, name, category, stock, price, img, insertDate);
+				
+				productInfoList.add(nthProductInfo);
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally{
+			db.closeResultSet(rs);
+			db.closePstmt(pstmt);
+			db.closeConnection(conn);
+			
+		}
+
+		return productInfoList;
+		
+	}
+	
+	
+	public void decreaseStockById(int productId) {
+		Database db = new Database();
+		
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
+		
+		try {
+			
+			String sql = "UPDATE product_info SET stock = stock - 1 WHERE idx = ?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, productId);
+			pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			
+		} finally {
+			db.closePstmt(pstmt);
+			db.closeConnection(conn);
+		}
+		
+	}
 	
 }
 	
