@@ -139,23 +139,39 @@
 		return false;
 	}
 	
+	if($id.length() < 4 && $id.length() > 10){
+		alert("아이디는 최소 4자, 최대 10자까지 입력 가능합니다.")
+		return false;
+	}
+	
+	correctId = $id.matches("^[a-zA-Z0-9]+$")
+	if(!correctID){
+		alert("영문 대소문자와 숫자로 이루어져야합니다.");
+		return false;
+	}
+	
 	// 2. 비밀번호 검증
 	let $pw = $("#floatingPassword");
+	if($pw.val() == ""){
+		// 아이디를 입력하지 않았다면
+		alert("비밀번호를 입력하세요");
+		return false;
+	}
 	
 	// 3. 비밀번호 확인 검증
 	let $pwChk = $("#floatingPasswordCheck");
 	
 	// 4. 이름 검증
-	let $name =$("#floatingName");
+	let $name = $("#floatingName");
 	
 	// 5. 연락처 검증
-	let $tel =$("#floatingTel");
+	let $tel = $("#floatingTel");
 	
 	// 6. 주소 검증
-	let $addr =$("#floatingAddr");
+	let $addr = $("#floatingAddr");
 	
 	// 7. 이메일 검증
-	let $email =$("#floatingEmail");
+	let $email = $("#floatingEmail");
 	
 	let id = $id.val();
 	let pw = $pw.val();
@@ -205,9 +221,46 @@
 			
 		}
 	});
-	
-	 
   });
+  
+  
+	// 과제1
+	// js jquery를 사용해서 
+	// 1. 모든 약관 동의 체크 박스를 눌렀을 때 이용 약관 동의 ,
+	// 개인 정보 수집 및 이용 동의 체크 박스가 체크되도록 하세요
+	
+	// 2. 모든 약관에 동의 했을 경우 회원 가입 버튼이 동작하도록 하세요
+
+  $(".form-floating").on("click", "#term1", function(){
+	  var checked = $(this).is(":cheked");
+	  
+	  let $term1Check = $("#term1");
+	  let $term2Check = $("#term2");
+	  let $term3Check = $("#term3");
+	  
+	  if(checked){
+		  $term1Check.find('input').prop("checked", true);
+	  }else{
+		  $term1Check.find('input').prop("checked", false);
+	  }
+  });
+  
+//   .form-floating
+//   .form-check
+  
+//   #term1
+//   #term2
+//   #term3
+
+  $(".form-floating").on("click", ".normal", function() {
+  var checked = $(this).is(":checked");
+
+  if (!checked) {
+  	$("#check_all").prop("checked", false);
+  }
+});
+
+  
   </script>
   
   </body>
