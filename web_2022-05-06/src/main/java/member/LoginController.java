@@ -13,7 +13,7 @@ import service.MemberService;
 import util.Validator;
 import vo.MemberInfo;
 
-@WebServlet("/login/controller")
+@WebServlet("/member/login")
 public class LoginController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

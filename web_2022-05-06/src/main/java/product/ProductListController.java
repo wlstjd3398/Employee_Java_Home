@@ -27,7 +27,7 @@ public class ProductListController extends HttpServlet {
 		
 		int amountOfProductInfo = dao.getCount();
 		
-		int startIndex = (pageNumber - 1) * 10;
+		int startIndex = (pageNumber - 1) * 8;
 		if(startIndex >= amountOfProductInfo) {
 			response.setStatus(HttpServletResponse.SC_NO_CONTENT);
 			return;
@@ -45,10 +45,11 @@ public class ProductListController extends HttpServlet {
 			int price = productInfo.getPrice();
 			String img = productInfo.getImg();
 			
-			String productJson = "{\"name\":\"" + name + "\",\"category\":\"" + category + "\",\"price\":\"" + price + "\",\"img\":\"" + img + "\"}";
+			String productJson = "{\"name\":\"" + name + "\",\"category\":\"" + category + "\",\"price\":\"" + price + "\",\"img\":\"" + img + "\"},";
 			data += productJson;
 		}
 		
+		data = data.substring(0, data.length()-1);
 		data +="]}";
 		
 		response.setContentType("application/json;chareset=utf-8");

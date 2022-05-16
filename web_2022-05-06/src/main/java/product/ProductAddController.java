@@ -62,6 +62,9 @@ public class ProductAddController extends HttpServlet {
 			
 			//아무것도 하지않으면 상태코드 200을 전달함
 //			response.setStatus(HttpServletResponse.SC_OK);
+			
+			response.sendRedirect("http://localhost:8080/shoppingmall/shop/product_list.jsp?active=product_list&pageNumber=1");
+			
 	}
 
 }

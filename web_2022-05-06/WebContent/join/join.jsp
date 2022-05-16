@@ -54,11 +54,6 @@
         <label for="floatingName">이메일</label>
       </div>
       
-      <script src="../js/jquery-3.6.0.min.js"></script>
-      <script>
-      
-      </script>
-      
       <div class="form-floating">
         <ul class="list-group">
           <li class="list-group-item">
@@ -139,16 +134,16 @@
 		return false;
 	}
 	
-	if($id.length() < 4 && $id.length() > 10){
-		alert("아이디는 최소 4자, 최대 10자까지 입력 가능합니다.")
-		return false;
-	}
+// 	if($id.length() < 4 && $id.length() > 10){
+// 		alert("아이디는 최소 4자, 최대 10자까지 입력 가능합니다.")
+// 		return false;
+// 	}
 	
-	correctId = $id.matches("^[a-zA-Z0-9]+$")
-	if(!correctID){
-		alert("영문 대소문자와 숫자로 이루어져야합니다.");
-		return false;
-	}
+// 	correctId = $id.matches("^[a-zA-Z0-9]+$")
+// 	if(!correctID){
+// 		alert("영문 대소문자와 숫자로 이루어져야합니다.");
+// 		return false;
+// 	}
 	
 	// 2. 비밀번호 검증
 	let $pw = $("#floatingPassword");
@@ -231,19 +226,19 @@
 	
 	// 2. 모든 약관에 동의 했을 경우 회원 가입 버튼이 동작하도록 하세요
 
-  $(".form-floating").on("click", "#term1", function(){
-	  var checked = $(this).is(":cheked");
+//   $(".form-floating").on("click", "#term1", function(){
+// 	  var checked = $(this).is(":cheked");
 	  
-	  let $term1Check = $("#term1");
-	  let $term2Check = $("#term2");
-	  let $term3Check = $("#term3");
+// 	  let $term1Check = $("#term1");
+// 	  let $term2Check = $("#term2");
+// 	  let $term3Check = $("#term3");
 	  
-	  if(checked){
-		  $term1Check.find('input').prop("checked", true);
-	  }else{
-		  $term1Check.find('input').prop("checked", false);
-	  }
-  });
+// 	  if(checked){
+// 		  $term1Check.find('input').prop("checked", true);
+// 	  }else{
+// 		  $term1Check.find('input').prop("checked", false);
+// 	  }
+//   });
   
 //   .form-floating
 //   .form-check
@@ -252,13 +247,13 @@
 //   #term2
 //   #term3
 
-  $(".form-floating").on("click", ".normal", function() {
-  var checked = $(this).is(":checked");
+//   $(".form-floating").on("click", ".normal", function() {
+//   var checked = $(this).is(":checked");
 
-  if (!checked) {
-  	$("#check_all").prop("checked", false);
-  }
-});
+//   if (!checked) {
+//   	$("#check_all").prop("checked", false);
+//   }
+// });
 
   
   </script>

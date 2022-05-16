@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -19,291 +18,18 @@
     </head>
     <body>
         <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="#!">
-               		<i class="bi bi-hand-index-thumb" id="rightHandLogo"></i>
-               		<i class="bi bi-hand-index-thumb" id="leftHandLogo"></i>
-                	두두몰
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="/shoppingmall/index.jsp">홈</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/shoppingmall/index.jsp">브랜드 소개</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/shoppingmall/login/login.jsp">로그인</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/shoppingmall/login/login.jsp">회원가입</a></li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">쇼핑</a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="/shoppingmall/shop/product_list.jsp">모든 상품</a></li>
-                                <li><hr class="dropdown-divider" /></li>
-                                <li><a class="dropdown-item" href="#!">인기 상품</a></li>
-                                <li><a class="dropdown-item" href="#!">새로운 상품</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <form class="d-flex">
-                        <button class="btn btn-outline-dark" type="submit">
-                            <i class="bi-cart-fill me-1"></i>
-                            장바구니
-                            <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </nav>
+        <%@ include file="../includes/header_nav.jsp" %>
+        
         <!-- Header-->
-        <header class="bg-dark py-5">
-            <div class="container px-4 px-lg-5 my-5">
-                <div class="text-center text-white">
-                    <h1 class="display-4 fw-bolder">모든 상품</h1>
-                    <p class="lead fw-normal text-white-50 mb-0">With this shop hompeage template</p>
-                </div>
-            </div>
-        </header>
+        <%@ include file="../includes/header.jsp" %>
+        
         <!-- Section-->
         <section class="py-5">
             <div class="container px-4 px-lg-5 mt-5">
-                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-                    <div class="col mb-5">
-                        <div class="card h-100">
-                            <!-- Product image-->
-                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-                            <!-- Product details-->
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <!-- Product name-->
-                                    <h5 class="fw-bolder">Fancy Product</h5>
-                                    <!-- Product price-->
-                                    $40.00 - $80.00
-                                </div>
-                            </div>
-                            <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center">
-                                	<a class="btn btn-outline-dark mt-auto" href="#">상세 정보</a>
-                                	<a class="btn btn-outline-dark mt-auto" href="#">카드에 담기</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col mb-5">
-                        <div class="card h-100">
-                            <!-- Sale badge-->
-                            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
-                            <!-- Product image-->
-                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-                            <!-- Product details-->
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <!-- Product name-->
-                                    <h5 class="fw-bolder">Special Item</h5>
-                                    <!-- Product reviews-->
-                                    <div class="d-flex justify-content-center small text-warning mb-2">
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                    </div>
-                                    <!-- Product price-->
-                                    <span class="text-muted text-decoration-line-through">$20.00</span>
-                                    $18.00
-                                </div>
-                            </div>
-                            <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center">
-                                	<a class="btn btn-outline-dark mt-auto" href="#">상세 정보</a>
-                                	<a class="btn btn-outline-dark mt-auto" href="#">카드에 담기</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col mb-5">
-                        <div class="card h-100">
-                            <!-- Sale badge-->
-                            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
-                            <!-- Product image-->
-                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-                            <!-- Product details-->
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <!-- Product name-->
-                                    <h5 class="fw-bolder">Sale Item</h5>
-                                    <!-- Product price-->
-                                    <span class="text-muted text-decoration-line-through">$50.00</span>
-                                    $25.00
-                                </div>
-                            </div>
-                            <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center">
-                                	<a class="btn btn-outline-dark mt-auto" href="#">상세 정보</a>
-                                	<a class="btn btn-outline-dark mt-auto" href="#">카드에 담기</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col mb-5">
-                        <div class="card h-100">
-                            <!-- Product image-->
-                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-                            <!-- Product details-->
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <!-- Product name-->
-                                    <h5 class="fw-bolder">Popular Item</h5>
-                                    <!-- Product reviews-->
-                                    <div class="d-flex justify-content-center small text-warning mb-2">
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                    </div>
-                                    <!-- Product price-->
-                                    $40.00
-                                </div>
-                            </div>
-                            <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center">
-                                	<a class="btn btn-outline-dark mt-auto" href="#">상세 정보</a>
-                                	<a class="btn btn-outline-dark mt-auto" href="#">카드에 담기</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col mb-5">
-                        <div class="card h-100">
-                            <!-- Sale badge-->
-                            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
-                            <!-- Product image-->
-                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-                            <!-- Product details-->
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <!-- Product name-->
-                                    <h5 class="fw-bolder">Sale Item</h5>
-                                    <!-- Product price-->
-                                    <span class="text-muted text-decoration-line-through">$50.00</span>
-                                    $25.00
-                                </div>
-                            </div>
-                            <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center">
-                                	<a class="btn btn-outline-dark mt-auto" href="#">상세 정보</a>
-                                	<a class="btn btn-outline-dark mt-auto" href="#">카드에 담기</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col mb-5">
-                        <div class="card h-100">
-                            <!-- Product image-->
-                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-                            <!-- Product details-->
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <!-- Product name-->
-                                    <h5 class="fw-bolder">Fancy Product</h5>
-                                    <!-- Product price-->
-                                    $120.00 - $280.00
-                                </div>
-                            </div>
-                            <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center">
-                                	<a class="btn btn-outline-dark mt-auto" href="#">상세 정보</a>
-                                	<a class="btn btn-outline-dark mt-auto" href="#">카드에 담기</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col mb-5">
-                        <div class="card h-100">
-                            <!-- Sale badge-->
-                            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
-                            <!-- Product image-->
-                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-                            <!-- Product details-->
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <!-- Product name-->
-                                    <h5 class="fw-bolder">Special Item</h5>
-                                    <!-- Product reviews-->
-                                    <div class="d-flex justify-content-center small text-warning mb-2">
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                    </div>
-                                    <!-- Product price-->
-                                    <span class="text-muted text-decoration-line-through">$20.00</span>
-                                    $18.00
-                                </div>
-                            </div>
-                            <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center">
-                                	<a class="btn btn-outline-dark mt-auto" href="#">상세 정보</a>
-                                	<a class="btn btn-outline-dark mt-auto" href="#">카드에 담기</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col mb-5">
-                        <div class="card h-100">
-                            <!-- Product image-->
-                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-                            <!-- Product details-->
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <!-- Product name-->
-                                    <h5 class="fw-bolder">Popular Item</h5>
-                                    <!-- Product reviews-->
-                                    <div class="d-flex justify-content-center small text-warning mb-2">
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                    </div>
-                                    <!-- Product price-->
-                                    $40.00
-                                </div>
-                            </div>
-                            <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center">
-                                	<a class="btn btn-outline-dark mt-auto" href="#">상세 정보</a>
-                                	<a class="btn btn-outline-dark mt-auto" href="#">카드에 담기</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center" id="product_list_wrapper"></div>
                 
                 <nav id="pagination_wrapper" aria-label="Page navigation example">
-				  <ul class="pagination pagination-lg">
-				    <li class="page-item">
-				      <a class="page-link" href="#" aria-label="Previous">
-				        <span aria-hidden="true">&laquo;</span>
-				      </a>
-				    </li>
-				    <li class="page-item"><a class="page-link" href="#">1</a></li>
-				    <li class="page-item"><a class="page-link" href="#">2</a></li>
-				    <li class="page-item"><a class="page-link" href="#">3</a></li>
-				    <li class="page-item">
-				      <a class="page-link" href="#" aria-label="Next">
-				        <span aria-hidden="true">&raquo;</span>
-				      </a>
-				    </li>
-				  </ul>
+				  <ul class="pagination pagination-lg"></ul>
 				</nav>
             </div>
         </section>
@@ -314,6 +40,78 @@
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
+        <script src="../js/scripts.js"></script>
+        
+        <script src="../js/jquery-3.6.0.min.js"></script>
+        <script>
+        	// pageNumber 파라미터의 값을 꺼내서
+        	// ajax의 pageNumber 데이터로 전달
+        	let pageNumber = 1;
+			
+        	let parameters = location.search;
+        	parameters = parameters.substr(1);
+        	parameters = parameters.split("&");
+
+        	let pageNumberParam = parameters[1];
+        	if(pageNumberParam != undefined) {
+        		pageNumberParam = pageNumberParam.split("=");
+            	
+            	pageNumber = pageNumberParam[1];
+        	}
+        	
+        	$.ajax({
+        		url: "/shoppingmall/product/list",
+        		type: "GET",
+        		data: "pageNumber=" + pageNumber,
+        		success: function(productInfo) {
+        			let pageCount = Math.ceil(productInfo.amount / 8);
+        			for(let count=1; count<=pageCount; count++) {
+        				$("ul.pagination").append("<li class=\"page-item\"><a class=\"page-link\" href=\"/shoppingmall/shop/product_list.jsp?active=product_list&pageNumber=" + count + "\">" + count + "</a></li>");
+        			}
+        			
+        			let tag = 
+		        		"<div class=\"col mb-5\">" + 
+		                    "<div class=\"card h-100\">" + 
+		                        "<img class=\"card-img-top\" src=\"http://localhost/shoppingmall/images/product/(1)\" alt=\"...\" />" +
+		                        "<div class=\"card-body p-4\">" +
+		                            "<div class=\"text-center\">" +
+		                                "<h5 class=\"fw-bolder\">(2)</h5>" +
+		                                "(3)" +
+		                            "</div>" +
+		                        "</div>" +
+		                        "<div class=\"card-footer p-4 pt-0 border-top-0 bg-transparent\">" +
+		                            "<div class=\"text-center\">" +
+		                            	"<a class=\"btn btn-outline-dark mt-auto\" href=\"#\">상세 정보</a>" +
+		                            	"<a class=\"btn btn-outline-dark mt-auto\" href=\"#\">카드에 담기</a>" +
+		                            "</div>" +
+		                        "</div>" +
+		                    "</div>" +
+		                "</div>";
+		            
+		            for(let i=0; i<productInfo.list.length; i++) {
+		            	let nthProduct = productInfo.list[i];
+		            	
+		            	let nthTag = tag.replace("(1)", nthProduct.img);
+		            	nthTag = nthTag.replace("(2)", nthProduct.name);
+		            	nthTag = nthTag.replace("(3)", nthProduct.price);
+		            	
+		            	$("#product_list_wrapper").append(nthTag);
+		            }
+        		},
+        		error: function(response) {
+        			console.log("에러 발생");
+        			console.log(response);
+        		}
+        	});
+        </script>
     </body>
 </html>
+
+
+
+
+
+
+
+
+
