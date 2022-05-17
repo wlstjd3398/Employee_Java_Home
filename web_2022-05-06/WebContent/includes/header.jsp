@@ -11,17 +11,28 @@
 <!-- active 파라미터의 값이 product_list라면 -->
     
 <c:set var="header_title" value="홈" />
-<c:if test="${param.active eq 'product_list' }" >
-	<c:set var="header_title" value="모든 상품" />
-</c:if>
+<c:choose>
+	<c:when test="${param.active eq 'product_list' }">
+		<c:set var="header_title" value="모든 상품" />
+	</c:when>
+	<c:when test="${param.active eq 'product_add' }">
+		<c:set var="header_title" value="상품 추가" />
+	</c:when>
+	<c:when test="${param.active eq 'product_detail' }">
+		<c:set var="header_title" value="상품 정보" />
+	</c:when>
+	<c:when test="${param.active eq 'product_update' }">
+		<c:set var="header_title" value="상품 수정" />
+	</c:when>
+</c:choose>
     
 <header class="bg-dark py-5">
-    <div class="container px-4 px-lg-5 my-5">
-        <div class="text-center text-white">
-            <h1 class="display-4 fw-bolder">홈</h1>
-            <p class="lead fw-normal text-white-50 mb-0">With this shop hompeage template</p>
-        </div>
-    </div>
+      <div class="container px-4 px-lg-5 my-5">
+          <div class="text-center text-white">
+              <h1 class="display-4 fw-bolder" id="header_title">${header_title}</h1>
+              <p class="lead fw-normal text-white-50 mb-0">With this shop hompeage template</p>
+          </div>
+      </div>
 </header>
 
 
