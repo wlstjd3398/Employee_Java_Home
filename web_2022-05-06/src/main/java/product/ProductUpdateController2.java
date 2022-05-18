@@ -25,8 +25,8 @@ import vo.ProductInfo;
 //		(postman을 사용해서 이와 같이 해결하는건 쉬움, HMTL/CSS/JS를 사용해서 이와 같이 처리하는 건 약간 어려울 수 있음)
 
 
-@WebServlet("/product/update")
-public class ProductUpdateController extends HttpServlet {
+//@WebServlet("/product/update")
+public class ProductUpdateController2 extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		

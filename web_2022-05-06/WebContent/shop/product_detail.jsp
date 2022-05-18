@@ -98,8 +98,22 @@
 	      	let idx = getParameter("idx");
 	   		
 	   		$("#update_btn").on("click", function(){
-	   			location.href = "/shoppingmall/manager/product_form.jsp?active=product_update&idx="+idx;
+	   			location.href = "/shoppingmall/manager/product_form2.jsp?active=product_update&idx="+idx;
 	   		});
+        </script>
+        
+        <script>
+        	$("#delete_btn").on("click", function(){
+        		$.ajax({
+        			url: "/shoppingmall/product/delete",
+        			type: "POST",
+        			data: "productId="+idx,
+        			success: function(){
+        				alert("상품을 삭제했습니다.");
+        				location.href="/shoppingmall/shop/product_list.jsp?active=product_list&pageNumber=1";
+        			}
+        		});
+        	});
         </script>
         
         <script>

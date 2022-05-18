@@ -62,7 +62,7 @@
         	$.ajax({
         		url: "/shoppingmall/product/list",
         		type: "GET",
-        		data: "pageNumber=" +pageNumber,
+        		data: "pageNumber="+pageNumber,
         		success: function(productInfo) {
         			
         			// productInfo.amount는 전체 페이지 
