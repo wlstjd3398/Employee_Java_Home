@@ -53,7 +53,7 @@ public class ProductListController extends HttpServlet {
 		data = data.substring(0, data.length()-1);
 		data += "]}";
 		
-		response.setContentType("application/json;chareset=utf-8");
+		response.setContentType("application/json;charset=utf-8");
 		
 		PrintWriter output = response.getWriter();
 		output.print(data);
