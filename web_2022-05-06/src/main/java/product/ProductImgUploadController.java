@@ -1,5 +1,6 @@
 package product;
 
+import java.io.File;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -26,43 +27,51 @@ import vo.ProductInfo;
 
 
 //@WebServlet("/product/update")
-public class ProductUpdateController2 extends HttpServlet {
+public class ProductImgUploadController extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		
-		if(request.getParameter("productId") == null || request.getParameter("stock") == null || request.getParameter("price") == null ) {
+		if(request.getParameter("productId") == null) {
 			response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+			
 			return;
 		}
 		
 		int productId = Integer.parseInt(request.getParameter("productId"));
 		// idx을 사용해서 상품정보를 수정해라
-		String name = request.getParameter("name");
-		String category = request.getParameter("category");
-		int stock = Integer.parseInt(request.getParameter("stock"));
-		int price = Integer.parseInt(request.getParameter("price"));
+		ProductInfoDao dao = new ProductInfoDao();
+		
+		ProductInfo productInfo = dao.selectByIdx(productId);
+		
+		// img가 실제 있는 경로
+		String path = request.getRealPath("/images/product/"+productInfo.getImg());
+		
+		int maximumSize = 10 * 1024 * 1024;
+		String encoding = "utf-8";
+		
+		MultipartRequest multi = new MultipartRequest(request, path, maximumSize, encoding, new DefaultFileRenamePolicy());
+		
+		request.setCharacterEncoding("UTF-8");
+		
+		
+		
+		// 해당 경로의 파일 삭제
+		File file = new File("삭제할 파일의 경로");
+		
+		// DB 상에서 이미지 파일 삭제
+		dao.deleteImgById(productId);
 		
 		
 		// 전달 받은 값 검증
 		
 		// 검증 후 카테고리 수정
-		if(category.equals("smartphone")) {
-			category = "스마트폰";
-		}else if(category.equals("notebook")) {
-			category = "노트북";
-		}else if(category.equals("tablet")) {
-			category = "테블릿";
-		}
+		
 		
 		// 전달 받은 값을 하나의 정보로 합침
 		ProductInfo productInfo = new ProductInfo();
 		
-		productInfo.setIdx(productId);
-		productInfo.setName(name);
-		productInfo.setCategory(category);
-		productInfo.setStock(stock);
-		productInfo.setPrice(price);
+		productInfo.setImg(img);
 
 		ProductInfoDao dao = new ProductInfoDao();
 		
