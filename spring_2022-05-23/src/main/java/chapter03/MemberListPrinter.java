@@ -1,4 +1,4 @@
-package chapter02;
+package chapter03;
 
 import java.util.Collection;
 
@@ -19,6 +19,7 @@ public class MemberListPrinter {
 	public void setMemberDao(MemberDao memberDao) {
 		this.memberDao = memberDao;
 	}
+
 	@Autowired
 	@Qualifier("printer1")
 	public void setMemberPrinter(MemberPrinter memberPrinter) {
@@ -37,8 +38,6 @@ public class MemberListPrinter {
 		
 		
 	}
-
-	
 
 	
 	

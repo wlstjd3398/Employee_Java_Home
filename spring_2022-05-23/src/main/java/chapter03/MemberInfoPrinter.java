@@ -1,45 +1,33 @@
-package chapter02;
-
-import java.util.Collection;
+package chapter03;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
-public class MemberListPrinter {
+import spring.MemberNotFoundException;
+
+public class MemberInfoPrinter {
 
 	private MemberDao memberDao;
 	private MemberPrinter memberPrinter;
-	
-//	public MemberListPrinter(MemberDao memberDao, MemberPrinter memberPrinter) {
-//		this.memberDao = memberDao;
-//		this.memberPrinter = memberPrinter;
-//	}
 	
 	@Autowired
 	public void setMemberDao(MemberDao memberDao) {
 		this.memberDao = memberDao;
 	}
 	@Autowired
-	@Qualifier("printer1")
+	@Qualifier("printer2")
 	public void setMemberPrinter(MemberPrinter memberPrinter) {
 		this.memberPrinter = memberPrinter;
 	}
 	
-	
-	public void printAll() {
-		Collection<Member> members = memberDao.selectAll();
-		
-		for(Member member : members) {
-			memberPrinter.print(member);
+	public void printMemberInfo(String email) throws MemberNotFoundException{
+		Member member = memberDao.selectByEmail(email);
+		if(member == null) {
+			throw new MemberNotFoundException();
 		}
 		
+		memberPrinter.print(member);
 		System.out.println();
-		
-		
 	}
-
-	
-
-	
 	
 }

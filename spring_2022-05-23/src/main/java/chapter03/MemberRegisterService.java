@@ -1,4 +1,4 @@
-package chapter02;
+package chapter03;
 
 import java.time.LocalDateTime;
 
@@ -9,9 +9,8 @@ import spring.DuplicateMemberException;
 
 public class MemberRegisterService {
 
-	// 자동 의존 주입 대상 객체에 @Qualifier 애노테이션을 사용하면
+	// 자동 의존 주입 대상 객체에 @Qualfier 애노테이션을 사용하면
 	// 이러한 한정자를 갖는 Bean 객체를 자동 의존 주입해라가 됨
-	
 	@Autowired
 	@Qualifier("memberDao")
 	private MemberDao memberDao;
