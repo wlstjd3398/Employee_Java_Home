@@ -1,24 +1,24 @@
-package chapter02;
+package chapter04;
 
 import java.time.LocalDateTime;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
 
 import spring.DuplicateMemberException;
-
+@Component
 public class MemberRegisterService {
 
-	// 자동 의존 주입 대상 객체에 @Qualifier 애노테이션을 사용하면
+	// 자동 의존 주입 대상 객체에 @Qualfier 애노테이션을 사용하면
 	// 이러한 한정자를 갖는 Bean 객체를 자동 의존 주입해라가 됨
-	
 	@Autowired
 	@Qualifier("memberDao")
 	private MemberDao memberDao;
 	
-	public MemberRegisterService(MemberDao memberDao) {
-		this.memberDao = memberDao;
-	}
+//	public MemberRegisterService(MemberDao memberDao) {
+//		this.memberDao = memberDao;
+//	}
 	
 	public long regist(RegisterRequest req) throws DuplicateMemberException{
 		// 이메일로 회원 정보 조회
