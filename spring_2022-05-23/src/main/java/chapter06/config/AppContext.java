@@ -6,6 +6,7 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 import chapter06.Calculator;
 import chapter06.ImpleCalculator1;
+import chapter06.aspect.CacheAspect;
 import chapter06.aspect.ExecTimeAspect;
 
 //스프링은 AOP를 적용할 때 프록시 디자인 패턴을 사용해서 적용
@@ -23,6 +24,11 @@ public class AppContext {
 	@Bean
 	public ExecTimeAspect execTimeAspect() {
 		return new ExecTimeAspect();
+	}
+	
+	@Bean
+	public CacheAspect cacheAspect() {
+		return new CacheAspect();
 	}
 	
 	@Bean
