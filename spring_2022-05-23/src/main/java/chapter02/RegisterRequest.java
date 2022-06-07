@@ -2,6 +2,7 @@ package chapter02;
 
 public class RegisterRequest {
 
+	// 회원 가입을 처리할때 필요한 이메일, 암호, 이름 데이터을 담고 있는 클래스
 	private String email;
 	private String password;
 	private String confirmPassword;

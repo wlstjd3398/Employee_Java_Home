@@ -117,7 +117,6 @@ public class MemberDao {
 	 // 1. 인덱스 파라미터를 순서대로 넣어서 update가능해짐
 		
 		
-		
 		// 2. jdbcTemplate을 사용해서 쿼리를 실행할 때 Servlet, JSP처럼 PreparedStatement를 사용할 수 있음
 		jdbcTemplate.update(new PreparedStatementCreator() {
 			
