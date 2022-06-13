@@ -3,6 +3,7 @@ package chapter10;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -15,7 +16,7 @@ public class MvcConfig implements WebMvcConfigurer{
 
 	// WebMvcConfigurer 인터페이스가 가지고 있는 메서드를 오버라이딩 한 이유
 	// 스프링 MVC의 설정을 개발자가 직접 조정하기 위해
-	
+
 	@Override
 	public void configureViewResolvers(ViewResolverRegistry registry) {
 		// JSP를 이용해서 컨트롤러의 처리 결과를 클라이언트에게 전달하기 위해서 이 메서드를 오버라이딩했음
@@ -32,6 +33,12 @@ public class MvcConfig implements WebMvcConfigurer{
 		configurer.enable();
 	}
 
+	// MainController생성하는것보다 오버라이딩하는 이방법이 더 간단히 구현가능
+	@Override
+	public void addViewControllers(ViewControllerRegistry registry) {
+		registry.addViewController("/main").setViewName("index");
+		
+	}
 	
 	
 }

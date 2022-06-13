@@ -1,11 +1,15 @@
 package chapter10;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import spring.DuplicateMemberException;
 
 // GetMapping, PostMapping, ... 애노테이션 -> 스프링 4.3버전에서 추가된 것
 // 스프링 4.3 미만의 버전에서는 @RequestMapping 밖에 없음
@@ -16,7 +20,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 // register로 시작하는 것을 뺄수있음
 @RequestMapping("/register")
 public class RegistController {
-
+	private MemberRegisterService memberRegSvc;
+	
+	// 생성자방식으로 Controller에 의존주입
+	public RegistController(MemberRegisterService memberRegSvc) {
+		this.memberRegSvc = memberRegSvc;
+	}
+	
+	
 		// 이 경로로 들어오는 GET 요청 처리
 		// 경로 하나가 딱 정해진건 아님 클라이언트도 get말고 post도 같이 step1로 접근가능함
 		@GetMapping("/step1")
@@ -30,7 +41,7 @@ public class RegistController {
 		
 		// 이 경로로 들어오는 POST 요청 처리
 		@PostMapping("/step2")
-		public String handleStep2(@RequestParam(value="agree", defaultValue="false") boolean agree) {
+		public String handleStep2(Model model, @RequestParam(value="agree", defaultValue="false") boolean agree) {
 			// 클라이언트가 보낸 값 (agree이름을 가짐 매개변수 HttpServletRequest request으로 가져옴)을 사용
 			// String agreeParam = request.getParameter("agree");
 			
@@ -40,6 +51,9 @@ public class RegistController {
 			if(!agree) {
 				return "register/step1";
 			}
+			
+			// step2.jsp에서 formData 라는 이름의 RegisterRequest 타입 커맨드 객체가 필요해 전달하는 코드
+			model.addAttribute("formData", new RegisterRequest());
 			return "register/step2";
 		}
 		
@@ -54,7 +68,7 @@ public class RegistController {
 		// 이 경로로 들어오는 모든 요청을 처리하겠다
 //		@RequestMapping("/step3")
 		@RequestMapping(value="/step3", method=RequestMethod.POST)
-		public String handleStep3(RegisterRequest regReq) {
+		public String handleStep3(@ModelAttribute("formData")RegisterRequest regReq) {
 				
 //				@RequestParam(value="email") String email,
 //									@RequestParam(value="name") String name,
@@ -76,13 +90,16 @@ public class RegistController {
 			
 			
 			// DB를 활용한 회원가입
-			
+			try {
+				memberRegSvc.regist(regReq);
+				
+				return "/register/step3";
+			}catch(DuplicateMemberException e) {
+				return "/register/step2";
+			}
 			
 			// ...
 			
-			
-			
-			return "register/step3";
 	}
 }
 		
