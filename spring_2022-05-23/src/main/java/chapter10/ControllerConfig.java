@@ -7,6 +7,8 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class ControllerConfig {
 
+	// 역으로 올라가면서 필요한 의존주입을 실행
+	
 	@Bean(destroyMethod = "close")
 	public DataSource dataSource() {
 		DataSource ds = new DataSource();
@@ -42,6 +44,11 @@ public class ControllerConfig {
 	@Bean
 	public RegistController registController() {
 		return new RegistController(memberRegSvc());
+	}
+	
+	@Bean
+	public SurveyController surveyController() {
+		return new SurveyController();
 	}
 	
 }
