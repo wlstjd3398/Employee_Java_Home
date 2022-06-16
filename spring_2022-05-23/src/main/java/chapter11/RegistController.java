@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -71,7 +72,7 @@ public class RegistController {
 		// 이 경로로 들어오는 모든 요청을 처리하겠다
 //		@RequestMapping("/step3")
 		@RequestMapping(value="/step3", method=RequestMethod.POST)
-		public String handleStep3(@ModelAttribute("formData")RegisterRequest regReq) {
+		public String handleStep3(@ModelAttribute("formData")RegisterRequest regReq, Errors errors) {
 				
 //				@RequestParam(value="email") String email,
 //									@RequestParam(value="name") String name,
@@ -92,13 +93,36 @@ public class RegistController {
 			// ...
 			
 			
-			// DB를 활용한 회원가입
-			try {
-				memberRegSvc.regist(regReq);
+			// Validation을 사용
+			new RegisterRequestValidator().validate(regReq, errors);
+			// 올바른 값들만 회원가입이 되도록
+			if(errors.hasErrors()) {
+				// 커맨드 객체 값 검증에 실패 했다면(클라이언트가 올바르지 않은 값을 전달했다면)
+				return "register/step2";
+			}else {
+				// 커맨드 객체 값 검증에 성공 했다면(클라이언트가 올바른 값을 전달했다면)
 				
-				return "/register/step3";
-			}catch(DuplicateMemberException e) {
-				return "/register/step2";
+				// DB를 활용한 회원가입
+				try {
+					memberRegSvc.regist(regReq);
+					//지금 예외를 던지고있음(DuplicateMemberException)
+					
+					return "register/step3";
+				}catch(DuplicateMemberException e) {
+					// 왜 실패했는지 사유를 알려줌
+					
+					errors.rejectValue("email", "duplicate");
+					
+//					errors.rejectValue("email", "duplicate", "이미 사용중인 이메일입니다.");
+//					이렇게 에러 간단하게 설명을 추가할수있음
+					
+					// 커맨드 객체 자체가 문제에 있다 라고 에러 코드를 남기고 싶다면
+					// errors.reject() 메서드를 사용하면 됨
+					// 이 메서드를 사용해서 에러 코드를 남기면 그 에러 코드는 글로벌 에러코드라고 부름
+//					errors.reject("wrong id or pw");
+					
+					return "register/step2";
+				}
 			}
 			
 			// ...
