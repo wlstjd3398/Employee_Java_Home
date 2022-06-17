@@ -1,4 +1,4 @@
-package chapter11;
+package chapter12;
 
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
