@@ -53,15 +53,15 @@ public class MemberService {
 		String tel = memberInfo.getTel();
 		String email = memberInfo.getEmail();
 		
-		// 아이디
+		// 유니크 아이디
 		if(isAlreadyID(id)) {
 			return true;
 		}
-		// 연락처
+		// 유니크 연락처
 		if(isAlreadyTel(tel)) {
 			return true;
 		}
-		// 이메일
+		// 유니크 이메일
 		if(isAlreadyEmail(email)) {
 			return true;
 		}
@@ -81,5 +81,12 @@ public class MemberService {
 		}else {
 			return 400;
 		}
+	}
+	
+	
+	public MemberInfo selectById(String id) {
+		MemberInfoDao dao = new MemberInfoDao();
+		
+		return dao.selectById(id);
 	}
 }
