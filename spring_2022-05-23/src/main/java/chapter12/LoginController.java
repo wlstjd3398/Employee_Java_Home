@@ -1,5 +1,7 @@
 package chapter12;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +14,7 @@ import exception.WrongIdPasswordException;
 @RequestMapping("/login")
 public class LoginController {
 	private AuthService authService;
+	// 컨트롤러가 service에 의존주입함
 	
 	public void setAuthService(AuthService authService) {
 		this.authService = authService;
@@ -23,7 +26,7 @@ public class LoginController {
 	}
 	
 	@PostMapping
-	public String submit(LoginRequest loginRequest, Errors errors) {
+	public String submit(LoginRequest loginRequest, Errors errors, HttpSession session) {
 		new LoginRequestValidator().validate(loginRequest, errors);
 		if(errors.hasErrors()) {
 			return "login/loginForm";
@@ -31,7 +34,9 @@ public class LoginController {
 		
 		try {
 			AuthInfo authInfo = authService.authenticate(loginRequest.getEmail(), loginRequest.getPassword());
-		
+			
+			session.setAttribute("authInfo", authInfo);	
+			
 			return "login/loginSuccess";
 			
 		} catch(WrongIdPasswordException e) {

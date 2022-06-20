@@ -32,6 +32,14 @@ public class ControllerConfig {
 	}
 	
 	@Bean
+	public AuthService authService() {
+		AuthService authService = new AuthService();
+		authService.setMemberDao(memberDao());
+		
+		return authService;
+	}
+	
+	@Bean
 	public MemberRegisterService memberRegSvc() {
 		MemberRegisterService memberRegSvc = new MemberRegisterService();
 		
@@ -51,4 +59,22 @@ public class ControllerConfig {
 		return new SurveyController();
 	}
 	
+	@Bean
+	public LoginController  loginController() {
+		LoginController loginController = new LoginController();
+		// 생성자 방식으로 불러왔기에 
+		loginController.setAuthService(authService());
+		
+		return loginController;
+	}
+	
+	@Bean
+	public LogoutController logoutController() {
+		return new LogoutController();
+	}
+	
+	@Bean
+	public ChangePasswordController changePasswordController() {
+		return new ChangePasswordController();
+	}
 }
