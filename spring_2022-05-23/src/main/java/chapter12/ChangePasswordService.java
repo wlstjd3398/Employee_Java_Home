@@ -24,6 +24,7 @@ public class ChangePasswordService {
 	@Transactional
 	public void changePassword(String email, String oldPw, String newPw) throws MemberNotFoundException, WrongIdPasswordException {
 		Member member = memberDao.selectByEmail(email);
+		// service가 memberDao에 의존하고있음
 		
 		if(member == null) {
 			throw new MemberNotFoundException();

@@ -75,6 +75,14 @@ public class ControllerConfig {
 	
 	@Bean
 	public ChangePasswordController changePasswordController() {
-		return new ChangePasswordController();
+		ChangePasswordController changePasswordController = new ChangePasswordController();
+		
+		ChangePasswordService changePasswordService = new ChangePasswordService();
+		changePasswordService.setMemberDao(memberDao());
+		// service가 memberDao에 의존하고있음
+		
+		changePasswordController.setChangePasswordService(changePasswordService);
+		
+		return changePasswordController;
 	}
 }
