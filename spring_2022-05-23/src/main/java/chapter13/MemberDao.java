@@ -33,7 +33,7 @@ public class MemberDao {
 	
 	// 날짜정보를 사용해서 회원정보를 조회함(그 기간에 가입한 회원정보를 조회)
 	public List<Member> selectByRegdate(LocalDateTime from, LocalDateTime to){
-		List<Member> results = jdbcTemplate.query("SELECT * FROM member WHERE regdate BETWEEN ? AND ? ORDER BY redate DESC", new MemberMapper(), from, to);
+		List<Member> results = jdbcTemplate.query("SELECT * FROM member WHERE regdate BETWEEN ? AND ? ORDER BY regdate DESC", new MemberMapper(), from, to);
 		// MemberMapper를 사용해서 조회한 데이터를 가져오고 from to 인덱스파라미터로 사용
 		return results;
 	}
