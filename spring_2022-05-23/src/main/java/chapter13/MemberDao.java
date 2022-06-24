@@ -19,6 +19,8 @@ import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Component;
 
+import chapter07.MemberListPrinter;
+
 public class MemberDao {
 
 	// 스프링은 쿼리를 실행하고 결과를 가져오기 위해서 JdbcTemplate을 사용함
@@ -29,6 +31,12 @@ public class MemberDao {
 	
 	public MemberDao(DataSource dataSource) {
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
+	}
+	
+	public Member selectById(long memberId) {
+		List<Member> results = jdbcTemplate.query("SELECT * FROM member WHERE memberNumber = ?", new MemberMapper(), memberId);
+		
+		return results.isEmpty() ? null : results.get(0);
 	}
 	
 	// 날짜정보를 사용해서 회원정보를 조회함(그 기간에 가입한 회원정보를 조회)

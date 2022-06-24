@@ -93,4 +93,12 @@ public class ControllerConfig {
 		
 		return memberListController;
 	}
+	
+	@Bean
+	public MemberDetailController memberDetailController() {
+		MemberDetailController memberDetailController = new MemberDetailController();
+		memberDetailController.setMemberDao(memberDao());
+		
+		return memberDetailController;
+	}
 }
