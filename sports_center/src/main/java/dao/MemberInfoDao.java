@@ -11,6 +11,7 @@ import vo.MemberInfo;
 
 public class MemberInfoDao {
 
+	// 회원가입
 	public boolean insert(MemberInfo memberInfo) {
 		Database db = new Database();
 		
@@ -203,6 +204,89 @@ public class MemberInfoDao {
 		return memberInfo;
 	}
 	
+	// 회원정보 수정
+	public void updateByID(MemberInfo memberInfo) {
+		Database db = new Database();
+		
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
+		
+		try {
+			
+//			String sql = "UPDATE member_info SET pw = ?, name = ?, tel = ?, addr = ?, email = ?, WHERE id = ?";
+			String sql = "UPDATE member_info SET name = ?, tel = ?, addr = ?, email = ? WHERE id = ?";
+			
+			pstmt = conn.prepareStatement(sql);
+//			pstmt.setString(1, memberInfo.getPw());
+			pstmt.setString(1, memberInfo.getName());
+			pstmt.setString(2, memberInfo.getTel());
+			pstmt.setString(3, memberInfo.getAddr());
+			pstmt.setString(4, memberInfo.getEmail());
+			pstmt.setString(5, memberInfo.getId());
+			
+			pstmt.executeUpdate();
+			// 따로 업데이트 결과를 리턴하지는 않고
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			db.closePstmt(pstmt);
+			db.closeConnection(conn);
+		}
+		
+	}
+	
+	// 회원정보 비밀번호 수정
+	public void updatePassWordById(String id, String pw) {
+		Database db = new Database();
+		
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
+		
+		try {
+			
+			String sql = "UPDATE member_info SET pw = ? WHERE id = ?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, pw);
+			pstmt.setString(2, id);
+			
+			pstmt.executeUpdate();
+			// 따로 업데이트 결과를 리턴하지는 않고
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			db.closePstmt(pstmt);
+			db.closeConnection(conn);
+		}
+	
+	}
+	
+	
+	// 회원 탈퇴
+	public void deleteMemberInfoByID(String id) {
+		Database db = new Database();
+		
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
+		
+		
+		try {
+			String sql = "DELETE FROM member_info WHERE id = ?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			db.closePstmt(pstmt);
+			db.closeConnection(conn);
+		}
+		
+	}
 	
 	
 }
