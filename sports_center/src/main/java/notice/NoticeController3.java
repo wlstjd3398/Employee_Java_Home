@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/notice/controller")
-public class NoticeController extends HttpServlet{
+public class NoticeController3 extends HttpServlet{
 
 //	공지사항 목록, 공지사항 전체갯수, 
 //	공지사항 쓰기, 공지사항 삭제,
