@@ -21,8 +21,8 @@
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
 			<param-value>
-				chapter13.MvcConfig
-				chapter13.ControllerConfig
+				chapter15.MvcConfig
+				chapter15.ControllerConfig
 <!-- 				chapter11.MemberConfig -->
 			</param-value>
 		</init-param>
