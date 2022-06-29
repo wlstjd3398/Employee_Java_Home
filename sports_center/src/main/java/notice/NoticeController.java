@@ -11,8 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/notice/controller")
 public class NoticeController extends HttpServlet{
 
-//	공지사항 목록, 공지사항 전체갯수, 
+//	공지사항 목록,  
 //	공지사항 쓰기, 공지사항 삭제,
+//	공지사항 전체갯수,
 //	공지사항 수정, 상세보기페이지 데이터불러오기
 	
 
