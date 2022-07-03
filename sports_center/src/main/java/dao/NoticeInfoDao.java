@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,11 +22,12 @@ public class NoticeInfoDao {
 		
 		try {
 			// 3. 쿼리 작성
-			String sql = "INSERT INTO notice_info(`title`, `content`) VALUES(?, ?)";
+			String sql = "INSERT INTO notice_info(`title`, `content`, `insertDate`) VALUES(?, ?, ?)";
 			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, noticeInfo.getTitle());
 			pstmt.setString(2, noticeInfo.getContent());
+			pstmt.setString(3, noticeInfo.getInsertDate().toString());
 			
 			// 4. stmt 를 통해서 쿼리 실행 및 결과 전달
 			int count = pstmt.executeUpdate();
@@ -64,8 +66,15 @@ public class NoticeInfoDao {
 				int idx = rs.getInt("idx");
 				String title = rs.getString("title");
 				String content = rs.getString("content");
+				String writer = rs.getString("writer");
+				String t_insertDate = rs.getString("insertDate");
 				
-				NoticeInfo nthNoticeInfo = new NoticeInfo(idx, title, content);
+				t_insertDate = t_insertDate.substring(0, t_insertDate.indexOf('.'));
+				t_insertDate = t_insertDate.replace(' ', 'T');
+				
+				LocalDateTime insertDate = LocalDateTime.parse(t_insertDate);
+				
+				NoticeInfo nthNoticeInfo = new NoticeInfo(idx, title, content, writer, insertDate);
 				
 				noticeInfoList.add(nthNoticeInfo);
 			}

@@ -1,19 +1,34 @@
 package vo;
 
+import java.time.LocalDateTime;
+
 public class NoticeInfo {
 	private int idx;
 	private String title;
 	private String content;
+	private String writer;
+	private LocalDateTime insertDate;
 	
-	public NoticeInfo(String title, String content) {
+	
+	public NoticeInfo(String title, String content, String writer, LocalDateTime insertDate) {
 		this.title = title;
 		this.content = content;
+		this.writer = writer;
+		this.insertDate = insertDate;
 	}
 	
 	public NoticeInfo(int idx, String title, String content) {
 		this.idx = idx;
 		this.title = title;
 		this.content = content;
+	}
+	
+	public NoticeInfo(int idx, String title, String content, String writer, LocalDateTime insertDate) {
+		this.idx = idx;
+		this.title = title;
+		this.content = content;
+		this.writer = writer;
+		this.insertDate = insertDate;
 	}
 	
 	public String getTitle() {
@@ -34,8 +49,22 @@ public class NoticeInfo {
 	public void setIdx(int idx) {
 		this.idx = idx;
 	}
-	
-	
+
+	public String getWriter() {
+		return writer;
+	}
+
+	public void setWriter(String writer) {
+		this.writer = writer;
+	}
+
+	public LocalDateTime getInsertDate() {
+		return insertDate;
+	}
+
+	public void setInsertDate(LocalDateTime insertDate) {
+		this.insertDate = insertDate;
+	}
 	
 	
 }
