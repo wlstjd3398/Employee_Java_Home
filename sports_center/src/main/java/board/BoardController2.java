@@ -44,10 +44,8 @@ public class BoardController2 extends HttpServlet{
 		
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
-		String writer = request.getParameter("writer");
-		LocalDateTime insertDate = LocalDateTime.now();
 		
-		BoardInfo boardInfo = new BoardInfo(idx, title, content, writer, insertDate);
+		BoardInfo boardInfo = new BoardInfo(idx, title, content);
 		
 		BoardService service = new BoardService();
 		

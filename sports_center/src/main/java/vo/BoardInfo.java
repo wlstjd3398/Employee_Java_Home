@@ -8,20 +8,20 @@ public class BoardInfo {
 	private String content;
 	private String writer;
 	private LocalDateTime insertDate;
-	private String reviewWriter;
-	private String reviewContent;
+	private int hits;
 	
 	
-	public BoardInfo(String reviewWriter, String reviewContent) {
-		this.reviewWriter = reviewWriter;
-		this.reviewContent = reviewContent;
-	}
-	
-	public BoardInfo(String title, String content, String writer, LocalDateTime insertDate) {
+	public BoardInfo(String title, String content, String writer, LocalDateTime insertDate, int hits) {
 		this.title = title;
 		this.content = content;
 		this.writer = writer;
 		this.insertDate = insertDate;
+		this.hits = hits;
+	}
+	
+	public BoardInfo(String title, String content) {
+		this.title = title;
+		this.content = content;
 	}
 	
 	public BoardInfo(int idx, String title, String content) {
@@ -30,12 +30,20 @@ public class BoardInfo {
 		this.content = content;
 	}
 	
-	public BoardInfo(int idx, String title, String content, String writer, LocalDateTime insertDate) {
+	public BoardInfo(int idx, String title, String content, int hits) {
+		this.idx = idx;
+		this.title = title;
+		this.content = content;
+		this.hits = hits;
+	}
+	
+	public BoardInfo(int idx, String title, String content, String writer, LocalDateTime insertDate, int hits) {
 		this.idx = idx;
 		this.title = title;
 		this.content = content;
 		this.writer = writer;
 		this.insertDate = insertDate;
+		this.hits = hits;
 	}
 	
 	public String getTitle() {
@@ -73,21 +81,15 @@ public class BoardInfo {
 		this.insertDate = insertDate;
 	}
 
-	public String getReviewWriter() {
-		return reviewWriter;
+	public int getHits() {
+		return hits;
 	}
 
-	public void setReviewWriter(String reviewWriter) {
-		this.reviewWriter = reviewWriter;
+	public void setHits(int hits) {
+		this.hits = hits;
 	}
-
-	public String getReviewContent() {
-		return reviewContent;
-	}
-
-	public void setReviewContent(String reviewContent) {
-		this.reviewContent = reviewContent;
-	}
+	
+	
 	
 	
 }

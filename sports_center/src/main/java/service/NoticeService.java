@@ -1,5 +1,6 @@
 package service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import dao.NoticeInfoDao;
@@ -33,8 +34,11 @@ public class NoticeService {
 			int idx = noticeInfo.getIdx();
 			String title = noticeInfo.getTitle();
 			String content = noticeInfo.getContent();
+			String writer = noticeInfo.getWriter();
+			LocalDateTime insertDate = noticeInfo.getInsertDate();
+			int hits = noticeInfo.getHits();
 			
-			data = data + "{\"idx\": " + idx + ",\"title\":\"" + title + "\",\"content\":\"" + content + "\"},";
+			data = data + "{\"idx\": " + idx + ",\"title\":\"" + title + "\",\"content\":\"" + content + ",\"writer\":\"" + writer + ",\"insertDate\":\"" + insertDate + ",\"hits\":\"" + hits + "\"},";
 		}
 		data = data.substring(0, data.length()-1);
 		data = data + "]}";

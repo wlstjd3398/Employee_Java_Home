@@ -8,6 +8,7 @@ public class NoticeInfo {
 	private String content;
 	private String writer;
 	private LocalDateTime insertDate;
+	private int hits;
 	
 	
 	public NoticeInfo(String title, String content, String writer, LocalDateTime insertDate) {
@@ -29,6 +30,15 @@ public class NoticeInfo {
 		this.content = content;
 		this.writer = writer;
 		this.insertDate = insertDate;
+	}
+	
+	public NoticeInfo(int idx, String title, String content, String writer, LocalDateTime insertDate, int hits) {
+		this.idx = idx;
+		this.title = title;
+		this.content = content;
+		this.writer = writer;
+		this.insertDate = insertDate;
+		this.hits = hits;
 	}
 	
 	public String getTitle() {
@@ -64,6 +74,14 @@ public class NoticeInfo {
 
 	public void setInsertDate(LocalDateTime insertDate) {
 		this.insertDate = insertDate;
+	}
+
+	public int getHits() {
+		return hits;
+	}
+
+	public void setHits(int hits) {
+		this.hits = hits;
 	}
 	
 	

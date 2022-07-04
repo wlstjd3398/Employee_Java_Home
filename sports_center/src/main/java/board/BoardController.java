@@ -58,7 +58,7 @@ public class BoardController extends HttpServlet{
 		String writer = request.getParameter("writer");
 		LocalDateTime insertDate = LocalDateTime.now();
 		
-		BoardInfo boardInfo = new BoardInfo(title, content, writer, insertDate);
+		BoardInfo boardInfo = new BoardInfo(title, content);
 		
 		BoardService service = new BoardService();
 		

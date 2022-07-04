@@ -4,6 +4,7 @@ import java.util.List;
 
 import dao.BoardInfoDao;
 import vo.BoardInfo;
+import vo.BoardReviewInfo;
 
 public class BoardService {
 
@@ -73,14 +74,14 @@ public class BoardService {
 		// 자유게시판의 상세 정보를 DB에서 불러옴
 		BoardInfoDao dao = new BoardInfoDao();
 				
-		BoardInfo boardInfo = dao.selectReviewByIdx(idx);
+		BoardReviewInfo boardReviewInfo = dao.selectReviewByIdx(idx);
 				
 		// 불러온 상세 정보를 클라이언트에게 전달하기 위해 JSON으로 구성
 		String data = null;
 				
-		if(boardInfo != null) {
+		if(boardReviewInfo != null) {
 			// 자유게시판의 댓글을 확인했다면 
-			data = "{\"idx\": " + boardInfo.getIdx() + ",\"writer\":\"" + boardInfo.getReviewWriter() + "\",\"content\":\"" + boardInfo.getReviewContent() + "\"}";
+			data = "{\"idx\": " + boardReviewInfo.getIdx() + ",\"reviewWriter\":\"" + boardReviewInfo.getReviewWriter() + "\",\"reviewContent\":\"" + boardReviewInfo.getReviewContent() + "\"}";
 		}
 				
 		return data;

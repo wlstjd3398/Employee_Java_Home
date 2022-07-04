@@ -68,13 +68,14 @@ public class NoticeInfoDao {
 				String content = rs.getString("content");
 				String writer = rs.getString("writer");
 				String t_insertDate = rs.getString("insertDate");
+				int hits = rs.getInt("hits");
 				
 				t_insertDate = t_insertDate.substring(0, t_insertDate.indexOf('.'));
 				t_insertDate = t_insertDate.replace(' ', 'T');
 				
 				LocalDateTime insertDate = LocalDateTime.parse(t_insertDate);
 				
-				NoticeInfo nthNoticeInfo = new NoticeInfo(idx, title, content, writer, insertDate);
+				NoticeInfo nthNoticeInfo = new NoticeInfo(idx, title, content, writer, insertDate, hits);
 				
 				noticeInfoList.add(nthNoticeInfo);
 			}

@@ -9,6 +9,7 @@ public class GalleryInfo {
 	private String img;
 	private String writer;
 	private LocalDateTime insertDate;
+	private int hits;
 	
 	
 	public GalleryInfo(String title, String content, String writer, String img, LocalDateTime insertDate) {
@@ -33,6 +34,16 @@ public class GalleryInfo {
 		this.img = img;
 		this.writer = writer;
 		this.insertDate = insertDate;
+	}
+	
+	public GalleryInfo(int idx, String title, String content, String img, String writer, LocalDateTime insertDate, int hits) {
+		this.idx = idx;
+		this.title = title;
+		this.content = content;
+		this.img = img;
+		this.writer = writer;
+		this.insertDate = insertDate;
+		this.hits = hits;
 	}
 	
 	public String getTitle() {
@@ -62,12 +73,29 @@ public class GalleryInfo {
 		this.writer = writer;
 	}
 
+	
+	public String getImg() {
+		return img;
+	}
+
+	public void setImg(String img) {
+		this.img = img;
+	}
+
 	public LocalDateTime getInsertDate() {
 		return insertDate;
 	}
 
 	public void setInsertDate(LocalDateTime insertDate) {
 		this.insertDate = insertDate;
+	}
+
+	public int getHits() {
+		return hits;
+	}
+
+	public void setHits(int hits) {
+		this.hits = hits;
 	}
 	
 	

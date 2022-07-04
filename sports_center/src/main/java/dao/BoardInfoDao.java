@@ -9,6 +9,7 @@ import java.util.List;
 
 import util.Database;
 import vo.BoardInfo;
+import vo.BoardReviewInfo;
 
 public class BoardInfoDao {
 
@@ -64,8 +65,9 @@ public class BoardInfoDao {
 				int idx = rs.getInt("idx");
 				String title = rs.getString("title");
 				String content = rs.getString("content");
+				int hits = rs.getInt("hits");
 				
-				BoardInfo nthBoardInfo = new BoardInfo(idx, title, content);
+				BoardInfo nthBoardInfo = new BoardInfo(idx, title, content, hits);
 				
 				boardInfoList.add(nthBoardInfo);
 			}
@@ -215,14 +217,14 @@ public class BoardInfoDao {
 	
 	
 	// 자유게시판 댓글dao
-	public BoardInfo selectReviewByIdx(int idx) {
+	public BoardReviewInfo selectReviewByIdx(int idx) {
 		Database db = new Database();
 		
 		Connection conn = db.getConnection();
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		BoardInfo boardInfo = null;
+		BoardReviewInfo boardReviewInfo = null;
 		
 		try {
 			String sql = "SELECT * FROM board_review_info WHERE idx = ?";
@@ -236,7 +238,7 @@ public class BoardInfoDao {
 				String writer = rs.getString("reviewWriter");
 				String content = rs.getString("reviewContent");
 				
-				boardInfo = new BoardInfo(idx, writer, content);
+				boardReviewInfo = new BoardReviewInfo(idx, writer, content);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -246,6 +248,6 @@ public class BoardInfoDao {
 			db.closeConnection(conn);
 		}
 		
-		return boardInfo;
+		return boardReviewInfo;
 	}
 }
