@@ -16,7 +16,7 @@ import exception.BadParameterException;
 import vo.GalleryInfo;
 
 
-//갤러리 추가(img 추가)
+// 갤러리 추가(img 추가)
 @WebServlet("/gallery/add")
 public class GalleryAddController {
 	private static final int MAXINUM_FILE_SIZE = 10 * 1024 * 1024; // 10MB

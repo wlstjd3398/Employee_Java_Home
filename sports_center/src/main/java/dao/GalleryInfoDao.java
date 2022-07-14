@@ -13,7 +13,8 @@ import vo.GalleryInfo;
 
 public class GalleryInfoDao {
 
-public boolean insertGalleryInfo(GalleryInfo galleryInfo) {
+	// 갤러리 추가 dao
+	public boolean insertGalleryInfo(GalleryInfo galleryInfo) {
 		
 		Database db = new Database();
 		
@@ -48,7 +49,7 @@ public boolean insertGalleryInfo(GalleryInfo galleryInfo) {
 	
 	}
 	
-	
+	// 갤러리 수정 dao
 	public void updateGalleryInfo(GalleryInfo galleryInfo) {
 		Database db = new Database();
 		
@@ -75,6 +76,7 @@ public boolean insertGalleryInfo(GalleryInfo galleryInfo) {
 		
 	}
 	
+	// 갤러리 삭제 dao
 	public void deleteByIdx(int idx) {
 		Database db = new Database();
 		
@@ -97,7 +99,7 @@ public boolean insertGalleryInfo(GalleryInfo galleryInfo) {
 		
 	}
 	
-	
+	// 갤러리 목록 불러오기 dao
 	public GalleryInfo selectByIdx(int idx) {
 		Database db = new Database();
 		
@@ -153,7 +155,7 @@ public boolean insertGalleryInfo(GalleryInfo galleryInfo) {
 		
 	}
 	
-	
+	// 갤러리 페이지수 불러오기 dao
 	public int getCount() {
 		Database db = new Database();
 		
@@ -188,6 +190,7 @@ public boolean insertGalleryInfo(GalleryInfo galleryInfo) {
 		
 	}
 	
+	// 갤러리 사진의수 불러오기 dao
 	public List<GalleryInfo> selectAll(int pageNumber){
 		Database db = new Database();
 		
@@ -200,7 +203,7 @@ public boolean insertGalleryInfo(GalleryInfo galleryInfo) {
 		try {
 			String sql = "SELECT * FROM gallery_info ORDER BY insertDate DESC LIMIT ?, 8";
 			
-			// * 6 한 페이지에 보여줘야할 상품의 수
+			// * 6 한 페이지에 보여줘야할 사진의 수
 			int startIndex = (pageNumber - 1) * 6;
 			
 			pstmt = conn.prepareStatement(sql);
@@ -238,16 +241,18 @@ public boolean insertGalleryInfo(GalleryInfo galleryInfo) {
 		
 	}
 	
-	
-	public void decreaseStockById(int idx) {
+	// 갤러리 hits 조회수+1 dao
+	public GalleryInfo increasehitsByIdx(int idx) {
 		Database db = new Database();
 		
 		Connection conn = db.getConnection();
 		PreparedStatement pstmt = null;
 		
+		GalleryInfo galleryInfo = null;
+		
 		try {
 			
-			String sql = "UPDATE gallery_info SET stock = stock - 1 WHERE idx = ?";
+			String sql = "UPDATE gallery_info SET hits = hits + 1 WHERE idx = ?";
 			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, idx);
@@ -260,8 +265,10 @@ public boolean insertGalleryInfo(GalleryInfo galleryInfo) {
 			db.closePstmt(pstmt);
 			db.closeConnection(conn);
 		}
+		return galleryInfo;
 	}
-
+	
+	// 갤러리 img 삭제 dao
 	public void deleteImgById(int idx) {
 		
 		// idx를 사용해서 img 칼럼의 값을 null로 설정(DB상에서 이미지 삭제)

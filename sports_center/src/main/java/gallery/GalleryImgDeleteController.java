@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import dao.GalleryInfoDao;
 import vo.GalleryInfo;
 
-// 갤러리 img포함 삭제
+// 갤러리 img 삭제
 @WebServlet("/gallery/img/delete")
 public class GalleryImgDeleteController extends HttpServlet{
 

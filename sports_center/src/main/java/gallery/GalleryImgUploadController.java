@@ -14,6 +14,7 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import dao.GalleryInfoDao;
 import vo.GalleryInfo;
 
+// 갤러리 img 추가
 //@WebServlet("/Gallery/update")
 public class GalleryImgUploadController extends HttpServlet {
 	

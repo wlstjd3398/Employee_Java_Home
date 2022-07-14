@@ -11,6 +11,12 @@ public class BoardReviewInfo {
 		this.reviewWriter = reviewWriter;
 		this.reviewContent = reviewContent;
 	}
+	
+	public BoardReviewInfo(String reviewWriter, String reviewContent) {
+		this.reviewWriter = reviewWriter;
+		this.reviewContent = reviewContent;
+	}
+
 
 
 	public int getIdx() {

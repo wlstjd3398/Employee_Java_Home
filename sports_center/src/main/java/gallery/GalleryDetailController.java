@@ -26,13 +26,17 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 			int idx = Integer.parseInt(request.getParameter("idx"));
 			
 			GalleryInfoDao dao = new GalleryInfoDao();
+			
 			GalleryInfo galleryInfo = dao.selectByIdx(idx);
 			
+			galleryInfo = dao.increasehitsByIdx(idx);
 			
 			if(galleryInfo == null) {
 				response.setStatus(HttpServletResponse.SC_NO_CONTENT);
 				return;
 			}
+			
+			
 			
 			String data = "{\"title\":\"(1)\", \"content\":\"(2)\",\"img\":(3)\"}";
 			data = data.replace("(1)", galleryInfo.getTitle());

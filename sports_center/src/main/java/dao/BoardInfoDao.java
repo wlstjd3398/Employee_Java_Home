@@ -114,7 +114,6 @@ public class BoardInfoDao {
 		}
 		
 		return amount;
-		
 	}
 	
 	
@@ -179,8 +178,6 @@ public class BoardInfoDao {
 			db.closeConnection(conn);
 		}
 		return result;
-		
-		
 	}
 	
 	
@@ -216,7 +213,10 @@ public class BoardInfoDao {
 	}
 	
 	
-	// 자유게시판 댓글dao
+//	===============================================================================
+			
+	
+	// 자유게시판댓글 목록 dao
 	public BoardReviewInfo selectReviewByIdx(int idx) {
 		Database db = new Database();
 		
@@ -235,10 +235,10 @@ public class BoardInfoDao {
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
-				String writer = rs.getString("reviewWriter");
-				String content = rs.getString("reviewContent");
+				String reviewWriter = rs.getString("reviewWriter");
+				String reviewContent = rs.getString("reviewContent");
 				
-				boardReviewInfo = new BoardReviewInfo(idx, writer, content);
+				boardReviewInfo = new BoardReviewInfo(idx, reviewWriter, reviewContent);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -250,4 +250,128 @@ public class BoardInfoDao {
 		
 		return boardReviewInfo;
 	}
+	
+	
+	// 자유게시판댓글 수 불러오기 dao
+	public int getAmountOfBoardReview() {
+		Database db = new Database();
+		
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		int amount = 0;
+		
+		try {
+			String sql = "SELECT COUNT(*) AS amount FROM board_review_info";
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			rs.next();
+			
+			amount = rs.getInt("amount"); // 칼럼 이름을 amount으로 사용
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			db.closeResultSet(rs);
+			db.closePstmt(pstmt);
+			db.closeConnection(conn);
+		}
+		
+		return amount;
+	}
+	
+	
+	// 새로운 자유게시판댓글 저장 dao
+	public boolean insertBoardReviewInfo(BoardReviewInfo boardReviewInfo) {
+		Database db = new Database();
+		
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
+		
+		try {
+			// 3. 쿼리 작성
+			String sql = "INSERT INTO board_review_info(`reviewWriter`, `reviewContent`) VALUES(?, ?)";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, boardReviewInfo.getReviewWriter());
+			pstmt.setString(2, boardReviewInfo.getReviewContent());
+			
+			// 4. stmt 를 통해서 쿼리 실행 및 결과 전달
+			int count = pstmt.executeUpdate();
+			
+			return count == 1;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			
+			return false;
+		} finally {
+			db.closePstmt(pstmt);
+			db.closeConnection(conn);
+		}
+	}
+	
+	// 자유게시판댓글 삭제 dao
+	public boolean deleteBoardReviewInfoByIdx(int idx) {
+		Database db = new Database();
+		
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
+		
+		boolean result = false;
+		
+		try {
+			String sql = "DELETE FROM board_review_info WHERE idx = ?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, idx);
+			
+			int count = pstmt.executeUpdate();
+			
+			result = count == 1;
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			db.closePstmt(pstmt);
+			db.closeConnection(conn);
+		}
+		return result;
+	}
+	
+	// 자유게시판댓글 수정 dao
+	public boolean updateBoardReviewInfo(BoardReviewInfo boardReviewInfo) {
+		Database db = new Database();
+		
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
+		
+		boolean result = false;
+		
+		try {
+			String sql = "UPDATE board_review_info SET reviewWriter = ?, reviewContent = ? WHERE idx = ?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1,  boardReviewInfo.getReviewWriter());
+			pstmt.setString(2,  boardReviewInfo.getReviewContent());
+			pstmt.setInt(3, boardReviewInfo.getIdx());
+			
+			int count = pstmt.executeUpdate();
+			
+			result = count == 1;
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			db.closePstmt(pstmt);
+			db.closeConnection(conn);
+		}
+		return result;
+	}
+	
+	
 }

@@ -2,21 +2,64 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>login</title>
+<title>로그인 페이지</title>
 </head>
 <body>
 
 	<form action="http://localhost:8080/sports_center/member/login" method="POST">
-		<div>
-			<label>아이디 : <input type="text" id="id" placeholder="id"> </label>
-		</div>
-		<div>
-			<label>비밀번호 : <input type="password" id="pw" placeholder="pw"> </label>
-		</div>
-		<button id="login_btn" type="submit">로그인</button>
-     	<button id="join_btn" type="button">회원가입</button>
-		
+		<div class="form-floating">
+        <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" name="id">
+        <label for="floatingInput">아이디(이메일)</label>
+      </div>
+      <div class="form-floating">
+        <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="pw">
+        <label for="floatingPassword">비밀번호</label>
+      </div>
+  
+      <div class="checkbox mb-3">
+        <label>
+          <input type="checkbox" value="remember-me"> 아이디 기억하기
+        </label>
+      </div>
+      <button class="w-100 btn btn-lg btn-primary" id="login_btn" type="submit">로그인</button>
+      <button class="w-100 btn btn-lg btn-secondary" id="join_btn" type="button">회원가입</button>
 	</form>
+
+	<script src="../js/jquery-3.6.0.min.js"></script>
+ 	<script src="../js/URLs.js"></script>
+  
+	 <script>
+	 $("#login_btn").on("click", function(event){
+	  // 클릭 했을때 submit 버튼의 기본 동작을 무시하고
+	  // 내가 지정한 동작하게 함
+	  event.preventDefault();
+	  
+	  let $id = $("#floatingInput");
+	  let $pw = $("#floatingPassword");
+	  "D:/JS/web_2022-05-06/src/main/java/member/LoginController.java"
+	  let id = $id.val();
+	  let pw = $pw.val();
+	  
+	  $.ajax({
+		 url: "http://localhost:8080/sports_center/member/login",
+		 type: "POST",
+		 data: "id="+id+"&pw="+pw,
+		 success: function(){
+			 // 로그인에 성공했을때
+			 location.href="http://localhost:8080/sports_center/index.jsp";
+		 },
+		 error: function(response){
+			 // 로그인에 실패했을때
+			 if(response.status == 400){
+				 alert("아이디와 비밀번호를 정확히 입력하세요.");
+			 }else if(response.status == 401){
+				 alert("아이디와 비밀번호를 확인하세요.");
+			 }
+		 }
+	  });
+	  
+	 });
+	 </script>
 
 </body>
 </html>

@@ -38,7 +38,7 @@ public class GalleryListController extends HttpServlet {
 		
 		request.setAttribute("galleryList", galleryInfoList);
 		
-		RequestDispatcher rd = request.getRequestDispatcher("/shop/gallery_list.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/gallery/list.jsp");
 		rd.forward(request, response);
 		
 		
